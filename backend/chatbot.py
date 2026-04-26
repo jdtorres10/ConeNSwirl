@@ -6,7 +6,8 @@ from langchain_voyageai import VoyageAIEmbeddings
 from langchain_classic.chains import create_history_aware_retriever, create_retrieval_chain
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-from langchain_community.document_loaders import TextLoader, CSVLoader
+from langchain_core.documents import Document
+from langchain_community.document_loaders import TextLoader
 
 KB_PATH = os.path.join(os.path.dirname(__file__), "..", "knowledge_base")
 
@@ -25,6 +26,12 @@ Help customers with:
 The 6 build steps are: 1) Cone type  2) Ice cream base  3) Filling  4) Blend mix-ins  \
 5) Stick'em toppings  6) Drizzle.
 
+When someone asks how to build a cone/cup, to walk through ordering, or for help \
+choosing at each step: answer using the retrieved context. Go through all six steps \
+in order (1→6), name concrete options from the context (cone types, bases, fillings, \
+blends, stick'ems, drizzles, pricing if present). Do not skip steps or reply with only \
+a generic "ask at the window" unless the context truly has no list for that step.
+
 Keep responses concise, warm, and conversational. If you're unsure about something, \
 direct customers to follow @conenswirl on Instagram or call/text (956) 324-8733.
 
@@ -36,8 +43,17 @@ def _load_documents():
     for filename in ["contact.txt", "faq.txt", "menu_details.txt", "schedule.txt"]:
         loader = TextLoader(os.path.join(KB_PATH, filename))
         docs.extend(loader.load())
-    csv_loader = CSVLoader(os.path.join(KB_PATH, "Menu.csv"))
-    docs.extend(csv_loader.load())
+    # One document for the whole CSV so row-by-row chunks don't crowd out the
+    # "how to build" guide in retrieval (CSVLoader makes one chunk per row).
+    menu_csv_path = os.path.join(KB_PATH, "Menu.csv")
+    with open(menu_csv_path, encoding="utf-8") as f:
+        csv_text = f.read()
+    docs.append(
+        Document(
+            page_content="Menu.csv (reference table of cone combinations):\n" + csv_text,
+            metadata={"source": "Menu.csv"},
+        )
+    )
     return docs
 
 
@@ -48,7 +64,7 @@ def build_chain():
 
     embeddings = VoyageAIEmbeddings(model="voyage-3", voyage_api_key=os.getenv("VOYAGE_API_KEY"))
     vectorstore = FAISS.from_documents(splits, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 4})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 8})
 
     llm = ChatAnthropic(
         model="claude-haiku-4-5-20251001",
