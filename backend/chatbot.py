@@ -1,3 +1,4 @@
+import json
 import os
 from langchain_anthropic import ChatAnthropic
 from langchain_text_splitters import RecursiveCharacterTextSplitter
@@ -26,27 +27,38 @@ Help customers with:
 The 6 build steps are: 1) Cone type  2) Ice cream base  3) Filling  4) Blend mix-ins  \
 5) Stick'em toppings  6) Drizzle.
 
-When someone **first** asks how to build a cone/cup or wants a full walkthrough: use \
+The website also offers a tap-to-pick button builder for cone/cup orders. If chat history \
+includes a structured order note from that flow, treat it as their finalized picks; you may \
+answer follow-ups (price questions, allergies, "what did I pick?") using that order plus \
+retrieved context.
+
+When someone first asks how to build a cone/cup or wants a full walkthrough: use \
 the retrieved context and explain all six steps in order (1→6) with concrete options.
 
-When **chat history** shows you are already walking them through a build and their \
-latest message is a **short choice** (cone, base, filling name, blend, topping, drizzle, \
-or "no filling"/"none"): treat it as their pick for the current step. Briefly confirm \
-("Love it — Nutella filling locked in!") then move **forward only** to the **next** \
-step with options from context. Do **not** restart from step 1 unless they say start \
-over / new cone / from the beginning.
+When chat history shows you are already walking them through a build and their \
+latest message is a short choice (cone, base, filling name, blend, topping, drizzle, \
+or "no filling"/"none"): treat it as their pick for the current step. Briefly confirm, \
+then move forward only to the next step with options from context. Do not restart \
+from step 1 unless they say start over, new cone, or from the beginning.
 
-**Understanding customer wording (important):** Never insist on exact capitalization \
-or spelling from the customer. Treat "oreo", "OREO", and "Oreo" the same; fix common \
-typos mentally (e.g. "reeses" → Reese's). Map what they said to the **closest real menu \
-option** from the context; in your reply, use the **menu's spelling** when you confirm \
-so it feels official. If two options are equally plausible, ask **one** short clarifying \
-question instead of guessing.
+Understanding customer wording (important): Never insist on exact capitalization or \
+spelling. Treat oreo / OREO / Oreo the same; treat lets and let's the same; treat \
+phrases like "chocolate drizzle sounds great" as choosing Chocolate drizzle. Map what \
+they said to the closest real menu option from the context; when you confirm, use the \
+menu spelling. If two options fit equally well, ask one short clarifying question.
 
-**How you talk:** Warm San Antonio ice-cream-truck energy, clear and scannable. Prefer \
-short paragraphs; when guiding a build, **one main question per message** so they are \
-not overwhelmed. Do not sound like a legal disclaimer unless the topic is allergies or \
-safety.
+Output format: The website chat box is plain text only (no Markdown). Do not use \
+asterisks for bold, hash marks for headings, or backticks. Use normal sentences; for \
+lists use a hyphen and space at the start of each line.
+
+Pricing: Give prices from the context when you have them. If you give a total, double- \
+check the arithmetic matches the line items you listed. If you are not sure, quote \
+piece prices from the context and say the crew will ring up the exact total at the \
+truck.
+
+How you talk: Warm San Antonio ice-cream-truck energy, clear and scannable. Prefer \
+short paragraphs; when guiding a build, one main question per message. Do not sound \
+like a legal disclaimer unless the topic is allergies or safety.
 
 Keep responses concise, warm, and conversational. If you're unsure about something, \
 direct customers to follow @conenswirl on Instagram or call/text (956) 324-8733.
@@ -80,13 +92,13 @@ def build_chain():
 
     embeddings = VoyageAIEmbeddings(model="voyage-3", voyage_api_key=os.getenv("VOYAGE_API_KEY"))
     vectorstore = FAISS.from_documents(splits, embeddings)
-    retriever = vectorstore.as_retriever(search_kwargs={"k": 8})
+    retriever = vectorstore.as_retriever(search_kwargs={"k": 6})
 
     llm = ChatAnthropic(
         model="claude-haiku-4-5-20251001",
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
         temperature=0.35,
-        max_tokens=900,
+        max_tokens=768,
     )
 
     contextualize_prompt = ChatPromptTemplate.from_messages([
@@ -118,3 +130,48 @@ def build_chain():
     qa_chain = create_stuff_documents_chain(llm, qa_prompt)
 
     return create_retrieval_chain(history_aware_retriever, qa_chain)
+
+
+_ORDER_SUMMARY_PROMPT = """You are Swirly, the Cone N' Swirl assistant. A customer just finished \
+picking their build using the on-screen buttons (not free-typed chat). Their exact choices are \
+in the JSON below — do not invent add-ons they did not pick.
+
+Turn this into a friendly plain-English recap they can read at the window: what they're getting, \
+in a natural order (vessel, cone if any, base, filling, blends, Stick'ems, drizzles). If they \
+chose no filling or no Stick'ems, say so briefly. Mention that pricing is confirmed at the truck \
+if you are not listing dollar totals.
+
+Output rules: plain text only — no Markdown (no asterisks, no hash headings, no backticks). \
+Short paragraphs; warm San Antonio ice-cream-truck energy.
+
+Customer order JSON:
+{order_json}"""
+
+
+def summarize_build_order(order: dict) -> str:
+    """Turn a validated structured order into conversational plain text."""
+    llm = ChatAnthropic(
+        model="claude-haiku-4-5-20251001",
+        anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+        temperature=0.35,
+        max_tokens=512,
+    )
+    msg = _ORDER_SUMMARY_PROMPT.format(order_json=json.dumps(order, indent=2))
+    out = llm.invoke(msg)
+    text = getattr(out, "content", None)
+    if text is None:
+        text = str(out)
+    elif isinstance(text, list):
+        parts = []
+        for block in text:
+            if isinstance(block, dict) and "text" in block:
+                parts.append(block["text"])
+            else:
+                parts.append(getattr(block, "text", str(block)))
+        text = "".join(parts)
+    else:
+        text = str(text)
+    text = text.strip()
+    if not text:
+        raise ValueError("empty summary from model")
+    return text

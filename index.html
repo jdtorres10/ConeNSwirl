@@ -1423,6 +1423,92 @@ body {
     }
     #cns-chat-send:hover { background: #d95f2e; }
     #cns-chat-send:disabled { background: #ccc; cursor: default; }
+
+    #cns-chat-builder-wrap {
+      flex-shrink: 0;
+      border-top: 1px solid #eee;
+      padding: 8px 12px 10px;
+      background: #fafafa;
+    }
+    #cns-build-toggle {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px dashed #f3764a;
+      border-radius: 10px;
+      background: #fff;
+      color: #c45a32;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s, border-color 0.15s;
+    }
+    #cns-build-toggle:hover { background: #fff5f0; border-style: solid; }
+    #cns-build-panel { margin-top: 10px; }
+    #cns-build-panel[hidden] { display: none !important; }
+    .cns-build-step-label {
+      font-family: 'Oswald', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #888;
+      margin-bottom: 6px;
+    }
+    .cns-build-help {
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 8px;
+      line-height: 1.35;
+    }
+    .cns-build-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .cns-build-chip {
+      padding: 6px 11px;
+      border-radius: 999px;
+      border: 1px solid #ddd;
+      background: #fff;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.78rem;
+      cursor: pointer;
+      transition: background 0.12s, border-color 0.12s, color 0.12s;
+    }
+    .cns-build-chip:hover { border-color: #f3764a; }
+    .cns-build-chip.cns-selected {
+      background: #f3764a;
+      border-color: #f3764a;
+      color: #fff;
+    }
+    .cns-build-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+      align-items: center;
+    }
+    .cns-build-nav button {
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+    }
+    .cns-build-nav .cns-build-primary {
+      background: #f3764a;
+      color: #fff;
+    }
+    .cns-build-nav .cns-build-primary:hover { background: #d95f2e; }
+    .cns-build-nav .cns-build-primary:disabled { background: #ccc; cursor: default; }
+    .cns-build-nav .cns-build-secondary {
+      background: #eee;
+      color: #333;
+    }
+    .cns-build-nav .cns-build-secondary:hover { background: #e0e0e0; }
   </style>
 
   <button id="cns-chat-bubble" aria-label="Chat with us">
@@ -1440,6 +1526,10 @@ body {
       <button id="cns-chat-close" aria-label="Close chat">&times;</button>
     </div>
     <div id="cns-chat-messages" aria-live="polite"></div>
+    <div id="cns-chat-builder-wrap">
+      <button type="button" id="cns-build-toggle">Build my cone or cup — tap options</button>
+      <div id="cns-build-panel" hidden aria-label="Button order builder"></div>
+    </div>
     <div id="cns-chat-footer">
       <input id="cns-chat-input" type="text" placeholder="Ask about our menu, location…" autocomplete="off" maxlength="400">
       <button id="cns-chat-send">Send</button>
@@ -1450,6 +1540,7 @@ body {
     (function () {
       // Full URL to the chat endpoint (must end with /chat — not just the .onrender.com host).
       const API_URL = 'https://conenswirl-chatbot.onrender.com/chat';
+      const API_ROOT = API_URL.replace(/\/chat\/?$/i, '');
 
       const bubble   = document.getElementById('cns-chat-bubble');
       const window_  = document.getElementById('cns-chat-window');
@@ -1457,15 +1548,31 @@ body {
       const input    = document.getElementById('cns-chat-input');
       const sendBtn  = document.getElementById('cns-chat-send');
       const feed     = document.getElementById('cns-chat-messages');
+      const buildToggle = document.getElementById('cns-build-toggle');
+      const buildPanel  = document.getElementById('cns-build-panel');
 
       let sessionId  = sessionStorage.getItem('cns_session_id') || null;
       let isOpen     = false;
       let isWaiting  = false;
 
+      var buildMenuData = null;
+      var buildStepIdx = 0;
+      var buildSelections = {};
+
+      function stripChatMarkdown(text) {
+        if (!text || typeof text !== 'string') return '';
+        var t = text;
+        t = t.replace(/\*\*([^*]+)\*\*/g, '$1');
+        t = t.replace(/\*([^*]+)\*/g, '$1');
+        t = t.replace(/^#{1,6}\s+/gm, '');
+        t = t.replace(/`([^`]+)`/g, '$1');
+        return t.trim();
+      }
+
       function addMessage(text, type) {
         const el = document.createElement('div');
         el.className = 'cns-msg cns-msg-' + type;
-        el.textContent = text;
+        el.textContent = type === 'bot' ? stripChatMarkdown(text) : text;
         feed.appendChild(el);
         feed.scrollTop = feed.scrollHeight;
         return el;
@@ -1475,6 +1582,9 @@ body {
         isWaiting = state;
         sendBtn.disabled = state;
         input.disabled   = state;
+        buildToggle.disabled = state;
+        var nav = buildPanel.querySelectorAll('button');
+        for (var ni = 0; ni < nav.length; ni++) nav[ni].disabled = state;
       }
 
       function openChat() {
@@ -1482,7 +1592,7 @@ body {
         window_.classList.remove('cns-hidden');
         input.focus();
         if (feed.children.length === 0) {
-          addMessage("Hi! I'm Swirly your favorite chatbot. Ask me about our menu, this week's locations, catering, or help building your perfect cone!", 'bot');
+          addMessage("Hi! I'm Swirly your favorite chatbot. Ask me about our menu, this week's locations, catering, or use \"Build my cone or cup\" below for tap-to-pick steps — I'll turn your picks into a plain-English recap when you're done!", 'bot');
         }
       }
 
@@ -1510,13 +1620,25 @@ body {
             headers: { 'Content-Type': 'application/json' },
             body:    JSON.stringify({ message: text, session_id: sessionId }),
           });
-          const data = await res.json();
+          var data = {};
+          try {
+            data = await res.json();
+          } catch (parseErr) {
+            typingEl.remove();
+            addMessage("Hmm — I couldn't read that reply. Try again in a moment?", 'bot');
+            return;
+          }
 
           typingEl.remove();
 
           if (data.session_id) {
             sessionId = data.session_id;
             sessionStorage.setItem('cns_session_id', sessionId);
+          }
+
+          if (!res.ok) {
+            addMessage(data.response || 'Sorry, that request failed. Try again?', 'bot');
+            return;
           }
 
           addMessage(data.response || 'Sorry, I had trouble with that. Try again!', 'bot');
@@ -1532,6 +1654,200 @@ body {
       sendBtn.addEventListener('click', sendMessage);
       input.addEventListener('keydown', function (e) {
         if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+      });
+
+      function activeBuildSteps() {
+        if (!buildMenuData || !buildMenuData.steps) return [];
+        var steps = buildMenuData.steps;
+        var out = [];
+        var container = buildSelections.container;
+        for (var i = 0; i < steps.length; i++) {
+          var s = steps[i];
+          if (s.only_if && s.only_if.container && container !== s.only_if.container) continue;
+          out.push(s);
+        }
+        return out;
+      }
+
+      function resetBuildWizard() {
+        buildStepIdx = 0;
+        buildSelections = {};
+        buildPanel.innerHTML = '';
+      }
+
+      function renderBuildStep() {
+        var steps = activeBuildSteps();
+        if (!steps.length) {
+          buildPanel.textContent = 'Could not load steps.';
+          return;
+        }
+        if (buildStepIdx >= steps.length) buildStepIdx = steps.length - 1;
+        var step = steps[buildStepIdx];
+        var sid = step.id;
+        var html = '<div class="cns-build-step-label">Step ' + (buildStepIdx + 1) + ' of ' + steps.length + '</div>';
+        html += '<div class="cns-build-step-label" style="color:#333;font-size:0.85rem;letter-spacing:0;text-transform:none">' + escapeHtml(step.label) + '</div>';
+        if (step.help) html += '<div class="cns-build-help">' + escapeHtml(step.help) + '</div>';
+        html += '<div class="cns-build-chips" role="group" aria-label="' + escapeHtml(step.label) + '">';
+
+        function chip(val, label, selected) {
+          var cls = 'cns-build-chip' + (selected ? ' cns-selected' : '');
+          return '<button type="button" class="' + cls + '" data-value="' + escapeHtml(val) + '">' + escapeHtml(label) + '</button>';
+        }
+
+        if (step.id === 'stickems' && step.multi) {
+          html += '<button type="button" class="cns-build-chip" data-stickem-none="1">No Stick\'ems</button>';
+        }
+
+        for (var oi = 0; oi < step.options.length; oi++) {
+          var o = step.options[oi];
+          var sel = false;
+          if (step.multi) {
+            var arr = buildSelections[sid] || [];
+            sel = arr.indexOf(o.value) >= 0;
+          } else {
+            sel = buildSelections[sid] === o.value;
+          }
+          html += chip(o.value, o.label, sel);
+        }
+        html += '</div><div class="cns-build-nav">';
+
+        if (buildStepIdx > 0) {
+          html += '<button type="button" class="cns-build-secondary" id="cns-build-back">Back</button>';
+        }
+        var isLastStep = buildStepIdx === steps.length - 1;
+        if (step.multi) {
+          var arr2 = buildSelections[sid] || [];
+          var minC = typeof step.min === 'number' ? step.min : 1;
+          var ok2 = arr2.length >= minC;
+          var nextLabel = isLastStep ? 'Finish & recap' : 'Next';
+          html += '<button type="button" class="cns-build-primary" id="cns-build-next"' + (ok2 ? '' : ' disabled') + '>' + nextLabel + '</button>';
+        }
+        html += '<button type="button" class="cns-build-secondary" id="cns-build-cancel">Close</button></div>';
+        buildPanel.innerHTML = html;
+
+        var chipEls = buildPanel.querySelectorAll('.cns-build-chip');
+        for (var ci = 0; ci < chipEls.length; ci++) {
+          chipEls[ci].addEventListener('click', onChipClick);
+        }
+        var backBtn = document.getElementById('cns-build-back');
+        if (backBtn) backBtn.addEventListener('click', function () {
+          buildStepIdx--;
+          renderBuildStep();
+        });
+        var nextBtn = document.getElementById('cns-build-next');
+        if (nextBtn) nextBtn.addEventListener('click', function () {
+          if (buildStepIdx >= activeBuildSteps().length - 1) submitBuildOrder();
+          else { buildStepIdx++; renderBuildStep(); }
+        });
+        var cancelBtn = document.getElementById('cns-build-cancel');
+        if (cancelBtn) cancelBtn.addEventListener('click', closeBuildPanel);
+      }
+
+      function escapeHtml(s) {
+        if (s == null) return '';
+        return String(s)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function onChipClick(ev) {
+        var t = ev.currentTarget;
+        if (t.getAttribute('data-stickem-none')) {
+          buildSelections.stickems = [];
+          buildStepIdx++;
+          renderBuildStep();
+          return;
+        }
+        var steps = activeBuildSteps();
+        var step = steps[buildStepIdx];
+        var val = t.getAttribute('data-value');
+        if (!step.multi) {
+          buildSelections[step.id] = val;
+          if (buildStepIdx < steps.length - 1) {
+            buildStepIdx++;
+            renderBuildStep();
+          } else {
+            submitBuildOrder();
+          }
+          return;
+        }
+        var arr = buildSelections[step.id] ? buildSelections[step.id].slice() : [];
+        var ix = arr.indexOf(val);
+        if (ix >= 0) arr.splice(ix, 1);
+        else arr.push(val);
+        buildSelections[step.id] = arr;
+        renderBuildStep();
+      }
+
+      async function submitBuildOrder() {
+        var steps = activeBuildSteps();
+        var order = {
+          container: buildSelections.container,
+          base: buildSelections.base,
+          filling: buildSelections.filling,
+          blends: buildSelections.blends || [],
+          stickems: buildSelections.stickems || [],
+          drizzles: buildSelections.drizzles || [],
+        };
+        if (buildSelections.container === 'cone') order.cone_type = buildSelections.cone_type;
+
+        setWaiting(true);
+        var typingEl = addMessage('Putting your order into words…', 'bot cns-msg-typing');
+        try {
+          var res = await fetch(API_ROOT + '/build-complete', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ order: order, session_id: sessionId }),
+          });
+          var data = {};
+          try { data = await res.json(); } catch (e1) {}
+          typingEl.remove();
+          if (data.session_id) {
+            sessionId = data.session_id;
+            sessionStorage.setItem('cns_session_id', sessionId);
+          }
+          if (!res.ok || !data.success) {
+            addMessage(data.error || 'Something went wrong saving your build. Try again?', 'bot');
+            return;
+          }
+          addMessage(data.summary, 'bot');
+          closeBuildPanel();
+        } catch (e2) {
+          typingEl.remove();
+          addMessage('Could not reach the server. Check your connection and try again.', 'bot');
+        } finally {
+          setWaiting(false);
+          input.focus();
+        }
+      }
+
+      function closeBuildPanel() {
+        buildPanel.hidden = true;
+        buildPanel.innerHTML = '';
+        resetBuildWizard();
+      }
+
+      buildToggle.addEventListener('click', async function () {
+        if (isWaiting) return;
+        if (!buildPanel.hidden) {
+          closeBuildPanel();
+          return;
+        }
+        if (!buildMenuData) {
+          try {
+            var mr = await fetch(API_ROOT + '/build-menu');
+            buildMenuData = await mr.json();
+            if (!mr.ok || !buildMenuData.steps) throw new Error('bad menu');
+          } catch (e) {
+            addMessage('I could not load the button menu from the server. You can still type your questions below!', 'bot');
+            return;
+          }
+        }
+        resetBuildWizard();
+        buildPanel.hidden = false;
+        renderBuildStep();
       });
     })();
   </script>
