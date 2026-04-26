@@ -18,6 +18,16 @@ print("Chatbot ready.")
 _sessions: dict[str, list] = {}
 
 
+@app.route("/", methods=["GET"])
+def root():
+    """Homepage is not the chat UI — the site is on GitHub Pages; this API serves /health and POST /chat."""
+    return jsonify({
+        "service": "Cone N' Swirl chatbot API",
+        "health": "/health",
+        "chat": "POST /chat (JSON body: message, optional session_id)",
+    })
+
+
 @app.route("/health", methods=["GET"])
 def health():
     return jsonify({"status": "ok"})

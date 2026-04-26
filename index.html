@@ -1283,7 +1283,7 @@ body {
 
   <!-- ═══════════════════════════════════════════
        CONE N' SWIRL — AI Chatbot Widget
-       API_URL below: update to your deployed backend URL before going live.
+       Set API_URL to your Render chat endpoint (…onrender.com/chat) before going live.
   ═══════════════════════════════════════════ -->
   <style>
     #cns-chat-bubble {
@@ -1448,6 +1448,7 @@ body {
 
   <script>
     (function () {
+      // Full URL to the chat endpoint (must end with /chat — not just the .onrender.com host).
       const API_URL = 'https://conenswirl-chatbot.onrender.com/chat';
 
       const bubble   = document.getElementById('cns-chat-bubble');
