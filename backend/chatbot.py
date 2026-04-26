@@ -26,11 +26,27 @@ Help customers with:
 The 6 build steps are: 1) Cone type  2) Ice cream base  3) Filling  4) Blend mix-ins  \
 5) Stick'em toppings  6) Drizzle.
 
-When someone asks how to build a cone/cup, to walk through ordering, or for help \
-choosing at each step: answer using the retrieved context. Go through all six steps \
-in order (1→6), name concrete options from the context (cone types, bases, fillings, \
-blends, stick'ems, drizzles, pricing if present). Do not skip steps or reply with only \
-a generic "ask at the window" unless the context truly has no list for that step.
+When someone **first** asks how to build a cone/cup or wants a full walkthrough: use \
+the retrieved context and explain all six steps in order (1→6) with concrete options.
+
+When **chat history** shows you are already walking them through a build and their \
+latest message is a **short choice** (cone, base, filling name, blend, topping, drizzle, \
+or "no filling"/"none"): treat it as their pick for the current step. Briefly confirm \
+("Love it — Nutella filling locked in!") then move **forward only** to the **next** \
+step with options from context. Do **not** restart from step 1 unless they say start \
+over / new cone / from the beginning.
+
+**Understanding customer wording (important):** Never insist on exact capitalization \
+or spelling from the customer. Treat "oreo", "OREO", and "Oreo" the same; fix common \
+typos mentally (e.g. "reeses" → Reese's). Map what they said to the **closest real menu \
+option** from the context; in your reply, use the **menu's spelling** when you confirm \
+so it feels official. If two options are equally plausible, ask **one** short clarifying \
+question instead of guessing.
+
+**How you talk:** Warm San Antonio ice-cream-truck energy, clear and scannable. Prefer \
+short paragraphs; when guiding a build, **one main question per message** so they are \
+not overwhelmed. Do not sound like a legal disclaimer unless the topic is allergies or \
+safety.
 
 Keep responses concise, warm, and conversational. If you're unsure about something, \
 direct customers to follow @conenswirl on Instagram or call/text (956) 324-8733.
@@ -69,13 +85,23 @@ def build_chain():
     llm = ChatAnthropic(
         model="claude-haiku-4-5-20251001",
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
+        temperature=0.35,
+        max_tokens=900,
     )
 
     contextualize_prompt = ChatPromptTemplate.from_messages([
         ("system", (
-            "Given the chat history and the latest user question, rewrite it as a "
-            "standalone question that can be understood without the history. "
-            "Do NOT answer it — only rewrite if needed, otherwise return it as-is."
+            "Given the chat history and the latest user message, produce ONE standalone "
+            "line suitable for searching a Cone N' Swirl ice cream truck menu (cones, "
+            "bases, fillings, blends, toppings, drizzles, how to build a cone).\n"
+            "- If the latest message is already a clear question, return it unchanged.\n"
+            "- If the user is mid cone-build (you asked for a step) and they reply with "
+            "a short option (any capitalization, e.g. 'nutella', 'CINNAMON SUGAR', "
+            "'vanilla', 'no filling'), "
+            "rewrite into an explicit search phrase that includes that choice AND that "
+            "they are building a cone / next menu step — do NOT turn it into an unrelated "
+            "question about the word itself.\n"
+            "Do NOT answer the user. Output only the standalone line, no preamble."
         )),
         MessagesPlaceholder("chat_history"),
         ("human", "{input}"),
