@@ -17,6 +17,7 @@ STEP 1 - Choose Your Cone:
 STEP 2 - Choose Your Ice Cream Base (Swirl Base):
 - Vanilla
 - Chocolate
+- No Ice Cream (Cone Only order)
 
 STEP 3 - Choose Your Filling (Optional):
 - Nutella Filling
@@ -64,6 +65,7 @@ Standard Blends:
 - Sprinkles Blend
 - Pretzels Blend 
 - Graham Cracker Blend
+- No Extra Blend
 
 
 STEP 5 - Choose Your Stick'em (Optional):
@@ -74,22 +76,39 @@ STEP 5 - Choose Your Stick'em (Optional):
 - Graham Cracker Stick 'Ems
 - Kit Kat Stick 'Ems
 - Nilla Wafers Stick 'Ems
+- No Stick 'Ems
 
 STEP 6 - Choose Your Drizzle:
 - Chocolate Drizzle
 - Strawberry Drizzle
 - Salted Caramel Drizzle
 - Caramel Drizzle
+- No Drizzle
 
 === PRICING ===
 
 Build Your Own Cone:
 - Base Cone (cone + ice cream + 1 standard blend): $9.99
+- Swirl Base (ice cream)
 - Filling Included
 - Traditional Standard Blend (1 Free)
 - Add Premium Blend $1.25 per blend
 - Add Extra Standard Blend $0.75 per blend (Optional)
 - Add Stick 'Em $0.99 each (Optional)
+- Add Drizzle $0.75 (Optional)
+
+Build Your Own Cup:
+- Base Cup (cup + ice cream + 1 standard blend): $6.99
+- Swirl Base (ice cream)
+- Traditional Standard Blend (1 Free)
+- Add Premium Blend $1.25 per blend
+- Add Extra Standard Blend $0.75 per blend (Optional)
+- Add Stick 'Em $0.99 each (Optional)
+- Add Drizzle $0.75 (Optional)
+
+Build Cone Only:
+- Base Cone
+- Filling Included
 - Add Drizzle $0.75 (Optional)
 
 === POPULAR COMBINATIONS ===
