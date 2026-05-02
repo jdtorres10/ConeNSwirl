@@ -5,7 +5,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, AIMessage
-from chatbot import summarize_build_order
+from chatbot import (
+    build_chain,
+    coerce_chain_answer_to_text,
+    sanitize_chat_history_messages,
+    summarize_build_order,
+)
 from build_menu import BUILD_MENU, validate_and_normalize_order
 
 load_dotenv()
@@ -13,9 +18,14 @@ load_dotenv()
 app = Flask(__name__)
 CORS(app, origins=os.getenv("ALLOWED_ORIGINS", "*"))
 
+print("Loading knowledge base and building RAG chain...")
+rag_chain = build_chain()
+print("API ready (RAG chat + build menu).")
+
 _sessions: dict[str, list] = {}
 
 _MAX_STORED_MESSAGES = 32
+_MAX_HISTORY_FOR_MODEL = 24
 
 
 def _tail_messages(messages: list, limit: int) -> list:
@@ -24,12 +34,25 @@ def _tail_messages(messages: list, limit: int) -> list:
     return messages[-limit:]
 
 
+def _rag_answer_raw(result: object) -> object:
+    """Normalize chain output shape across LangChain versions."""
+    if not isinstance(result, dict):
+        return None
+    if result.get("answer") is not None:
+        return result["answer"]
+    for key in ("output", "response", "text"):
+        if result.get(key) is not None:
+            return result[key]
+    return None
+
+
 @app.route("/", methods=["GET"])
 def root():
-    """API root — site is on GitHub Pages; this service exposes /health, /build-menu, /build-complete."""
+    """API root — GitHub Pages hosts the site; this service exposes health, chat, and build routes."""
     return jsonify({
-        "service": "Cone N' Swirl order API",
+        "service": "Cone N' Swirl chatbot API",
         "health": "/health",
+        "chat": "POST /chat (JSON body: message, optional session_id)",
         "build_menu": "GET /build-menu",
         "build_complete": "POST /build-complete (JSON: order, optional session_id)",
     })
@@ -85,6 +108,49 @@ def build_complete():
         "order": normalized,
         "summary": summary,
     })
+
+
+@app.route("/chat", methods=["POST"])
+def chat():
+    data = request.get_json(silent=True)
+    if not data or "message" not in data:
+        return jsonify({"error": "message is required"}), 400
+
+    user_message = data["message"].strip()
+    if not user_message:
+        return jsonify({"error": "message cannot be empty"}), 400
+
+    session_id = data.get("session_id") or str(uuid.uuid4())
+    history = _sessions.get(session_id, [])
+    history[:] = sanitize_chat_history_messages(list(history))
+
+    try:
+        history_for_model = _tail_messages(history, _MAX_HISTORY_FOR_MODEL)
+        result = rag_chain.invoke(
+            {"input": user_message, "chat_history": history_for_model}
+        )
+        answer = coerce_chain_answer_to_text(_rag_answer_raw(result))
+        if not answer:
+            raise ValueError("empty model answer")
+
+        history.append(HumanMessage(content=user_message))
+        history.append(AIMessage(content=answer))
+        if len(history) > _MAX_STORED_MESSAGES:
+            history[:] = _tail_messages(history, _MAX_STORED_MESSAGES)
+        _sessions[session_id] = history
+
+        return jsonify({"response": answer, "session_id": session_id, "success": True})
+
+    except Exception:
+        app.logger.exception("Chat error")
+        return jsonify({
+            "response": (
+                "Oops, something went wrong on my end! Try again, or follow "
+                "@conenswirl on Instagram for the latest info."
+            ),
+            "session_id": session_id,
+            "success": False,
+        }), 500
 
 
 if __name__ == "__main__":
