@@ -10,6 +10,7 @@ from langchain_classic.chains import create_history_aware_retriever, create_retr
 from langchain_classic.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_core.documents import Document
+from langchain_core.messages import AIMessage, BaseMessage, HumanMessage
 from langchain_community.document_loaders import TextLoader
 
 KB_PATH = os.path.join(os.path.dirname(__file__), "..", "knowledge_base")
@@ -43,6 +44,27 @@ def coerce_chain_answer_to_text(answer: Any) -> str:
                 parts.append(t if isinstance(t, str) else str(block))
         return "".join(parts).strip()
     return str(content).strip()
+
+
+def sanitize_chat_history_messages(messages: list[Any]) -> list[BaseMessage]:
+    """
+    Force string-only message content before sending chat_history to the retriever/LLM.
+    Older sessions may contain AIMessage list blocks or accidentally nested objects; some
+    providers reject those on subsequent turns.
+    """
+    out: list[BaseMessage] = []
+    for m in messages:
+        if isinstance(m, AIMessage):
+            out.append(AIMessage(content=coerce_chain_answer_to_text(m)))
+        elif isinstance(m, HumanMessage):
+            c = m.content
+            if isinstance(c, str):
+                out.append(HumanMessage(content=c.strip()))
+            else:
+                out.append(HumanMessage(content=coerce_chain_answer_to_text(c)))
+        else:
+            out.append(m)
+    return out
 
 
 SYSTEM_PROMPT = """You are a friendly and enthusiastic assistant for Cone N' Swirl, \
