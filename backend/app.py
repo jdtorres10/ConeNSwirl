@@ -5,7 +5,12 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, AIMessage
-from chatbot import build_chain, summarize_build_order
+from chatbot import (
+    build_chain,
+    coerce_chain_answer_to_text,
+    sanitize_chat_history_messages,
+    summarize_build_order,
+)
 from build_menu import BUILD_MENU, validate_and_normalize_order
 
 load_dotenv()
@@ -15,11 +20,10 @@ CORS(app, origins=os.getenv("ALLOWED_ORIGINS", "*"))
 
 print("Loading knowledge base and building RAG chain...")
 rag_chain = build_chain()
-print("Chatbot ready.")
+print("API ready (RAG chat + build menu).")
 
 _sessions: dict[str, list] = {}
 
-# Long threads + RAG chunks can exceed model context or slow the request; keep recent turns only.
 _MAX_STORED_MESSAGES = 32
 _MAX_HISTORY_FOR_MODEL = 24
 
@@ -30,9 +34,21 @@ def _tail_messages(messages: list, limit: int) -> list:
     return messages[-limit:]
 
 
+def _rag_answer_raw(result: object) -> object:
+    """Normalize chain output shape across LangChain versions."""
+    if not isinstance(result, dict):
+        return None
+    if result.get("answer") is not None:
+        return result["answer"]
+    for key in ("output", "response", "text"):
+        if result.get(key) is not None:
+            return result[key]
+    return None
+
+
 @app.route("/", methods=["GET"])
 def root():
-    """Homepage is not the chat UI — the site is on GitHub Pages; this API serves /health and POST /chat."""
+    """API root — GitHub Pages hosts the site; this service exposes health, chat, and build routes."""
     return jsonify({
         "service": "Cone N' Swirl chatbot API",
         "health": "/health",
@@ -106,14 +122,15 @@ def chat():
 
     session_id = data.get("session_id") or str(uuid.uuid4())
     history = _sessions.get(session_id, [])
+    history[:] = sanitize_chat_history_messages(list(history))
 
     try:
         history_for_model = _tail_messages(history, _MAX_HISTORY_FOR_MODEL)
         result = rag_chain.invoke(
             {"input": user_message, "chat_history": history_for_model}
         )
-        answer = result.get("answer") or ""
-        if not str(answer).strip():
+        answer = coerce_chain_answer_to_text(_rag_answer_raw(result))
+        if not answer:
             raise ValueError("empty model answer")
 
         history.append(HumanMessage(content=user_message))

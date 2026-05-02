@@ -17,16 +17,46 @@ STEP 1 - Choose Your Cone:
 STEP 2 - Choose Your Ice Cream Base (Swirl Base):
 - Vanilla
 - Chocolate
-- No Ice Cream (Cone Only order)
 
-STEP 3 - Choose Your Filling (Optional):
-- Nutella Filling
-- Cookie Butter Filling
-- Peanut Butter Filling
+STEP 3 - Choose Your Filling (Optional, Included Free):
+- Nutella 
+- Cookie Butter 
+- Peanut Butter
 - No Filling
 
+STEP 4 - Choose Your Blend (1 Free):
+Standard Blends:
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
+- No Blend
 
-STEP 4 - Premium Blends $1.25 (Optional):
+STEP 5 - Choose an Extra Blend (Optional, $0.75):
+Standard Blends:
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
+- No Extra Blend
+
+STEP 6 - Premium Blends (Optional, $1.25):
 - Brownie
 - Strawberry
 - Blueberry
@@ -35,59 +65,111 @@ STEP 4 - Premium Blends $1.25 (Optional):
 - Pineapple
 - No Premium Blend
 
-STEP 5 - Choose Your Blend (1 Free):
-Standard Blends:
-- No Blend
-- Coffee Blend
-- Mazapan Blend
-- Oreo Blend
-- Cookie Dough Blend
-- Nutter Butter Blend
-- Pecans Blend
-- Walnuts Blend
-- Almonds Blend
-- Reeses Blend
-- Sprinkles Blend
-- Pretzels Blend 
-- Graham Cracker Blend
+STEP 7 - Choose Your Stick 'Em (Optional, $0.99):
+- Oreo
+- Nutter Butter
+- Pretzel Rod
+- Reeses
+- Graham Cracker
+- Kit Kat
+- Nilla Wafers
+- No Stick 'Em
 
-STEP 6 - Choose an Extra Blend (Optional):
+STEP 8 - Choose Your Drizzle (Optional, $0.75):
+- Chocolate
+- Strawberry
+- Salted Caramel
+- Caramel
+- No Drizzle
+
+=== HOW TO BUILD YOUR PERFECT CUP N' SWIRL ===
+
+STEP 1 - Choose Your Ice Cream Base (Swirl Base):
+- Vanilla
+- Chocolate
+
+STEP 2 - Choose Your Blend (1 Free):
 Standard Blends:
-- Coffee Blend
-- Mazapan Blend
-- Oreo Blend
-- Cookie Dough Blend
-- Nutter Butter Blend
-- Pecans Blend
-- Walnuts Blend
-- Almonds Blend
-- Reeses Blend
-- Sprinkles Blend
-- Pretzels Blend 
-- Graham Cracker Blend
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
+- No Blend
+
+STEP 3 - Choose an Extra Blend (Optional, $0.75):
+Standard Blends:
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
 - No Extra Blend
 
+STEP 4 - Premium Blends (Optional, $1.25):
+- Brownie
+- Strawberry
+- Blueberry
+- Mango
+- Raspberry
+- Pineapple
+- No Premium Blend
 
-STEP 5 - Choose Your Stick'em (Optional):
-- Oreo Stick 'Ems
-- Nutter Butter Stick 'Ems
-- Pretzel Rod Stick 'Ems
-- Reeses Stick 'Ems
-- Graham Cracker Stick 'Ems
-- Kit Kat Stick 'Ems
-- Nilla Wafers Stick 'Ems
-- No Stick 'Ems
+STEP 5 - Choose Your Stick 'Em (Optional, $0.99):
+- Oreo
+- Nutter Butter
+- Pretzel Rod
+- Reeses
+- Graham Cracker
+- Kit Kat
+- Nilla Wafers
+- No Stick 'Em
 
-STEP 6 - Choose Your Drizzle:
-- Chocolate Drizzle
-- Strawberry Drizzle
-- Salted Caramel Drizzle
-- Caramel Drizzle
+STEP 6 - Choose Your Drizzle (Optional, $0.75):
+- Chocolate
+- Strawberry
+- Salted Caramel
+- Caramel
+- No Drizzle
+
+=== HOW TO BUILD YOUR CONE ONLY (No Ice Cream) ===
+
+STEP 1 - Choose Your Cone:
+- Cinnamon Sugar
+- Oreo
+- Graham Cracker
+- Plain
+
+STEP 2 - Choose Your Filling (Optional, Included Free):
+- Nutella
+- Cookie Butter
+- Peanut Butter
+- No Filling
+
+STEP 3 - Choose Your Drizzle (Optional, $0.75):
+- Chocolate
+- Strawberry
+- Salted Caramel
+- Caramel
 - No Drizzle
 
 === PRICING ===
 
-Build Your Own Cone:
+Cone N' Swirl:
 - Base Cone (cone + ice cream + 1 standard blend): $9.99
 - Swirl Base (ice cream)
 - Filling Included
@@ -97,7 +179,7 @@ Build Your Own Cone:
 - Add Stick 'Em $0.99 each (Optional)
 - Add Drizzle $0.75 (Optional)
 
-Build Your Own Cup:
+Cup N' Swirl:
 - Base Cup (cup + ice cream + 1 standard blend): $6.99
 - Swirl Base (ice cream)
 - Traditional Standard Blend (1 Free)
@@ -106,7 +188,7 @@ Build Your Own Cup:
 - Add Stick 'Em $0.99 each (Optional)
 - Add Drizzle $0.75 (Optional)
 
-Build Cone Only:
+Cone Only: (cone + filling, no ice cream): $6.99
 - Base Cone
 - Filling Included
 - Add Drizzle $0.75 (Optional)
@@ -145,19 +227,19 @@ Nut Allergies: IMPORTANT - Our kitchen handles peanuts, tree nuts, and nut-based
 === TOPPINGS & ADD-ONS ===
 
 Extra Drizzles: $0.75 each
-- Chocolate Drizzle
-- Strawberry Drizzle
-- Caramel Drizzle
-- Salted Caramel Drizzle
+- Chocolate
+- Strawberry
+- Caramel
+- Salted Caramel 
 
-Extra Stick 'Ems: $0.99 each
-- Oreo Stick 'Ems
-- Nutter Butter Stick 'Ems
-- Nilla Wafers Stick 'Ems
-- KitKat Stick 'Ems
-- Reeses Stick 'Ems
-- Pretzel Sticks Stick 'Ems
-- Graham Cracker Stick 'Ems
+Extra Stick 'Em: $0.99 each
+- Oreo 
+- Nutter
+- Nilla Wafers
+- KitKat
+- Reeses
+- Pretzel
+- Graham Cracker
 
 === DRINKS ===
 

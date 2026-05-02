@@ -1298,8 +1298,8 @@ body {
 
 
   <!-- ═══════════════════════════════════════════
-       CONE N' SWIRL — AI Chatbot Widget
-       Set API_URL to your Render chat endpoint (…onrender.com/chat) before going live.
+       CONE N' SWIRL — Widget: RAG chat (schedule, contact, menu Q&A) + Build My Order.
+       Set API_ROOT to your Render base URL (no trailing slash). Chat posts to API_ROOT/chat.
   ═══════════════════════════════════════════ -->
   <style>
     #cns-chat-bubble {
@@ -1407,11 +1407,22 @@ body {
     .cns-msg-typing { font-style: italic; color: #999; }
 
     #cns-chat-footer {
-      padding: 10px 12px;
+      padding: 8px 12px 12px;
       border-top: 1px solid #eee;
+      flex-shrink: 0;
+      background: #fafafa;
+    }
+    .cns-footer-hint {
+      margin: 0 0 8px;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.7rem;
+      line-height: 1.4;
+      color: #555;
+    }
+    .cns-footer-row {
       display: flex;
       gap: 8px;
-      flex-shrink: 0;
+      align-items: center;
     }
     #cns-chat-input {
       flex: 1;
@@ -1527,19 +1538,19 @@ body {
     .cns-build-nav .cns-build-secondary:hover { background: #e0e0e0; }
   </style>
 
-  <button id="cns-chat-bubble" aria-label="Chat with us">
+  <button id="cns-chat-bubble" aria-label="Chat and order with Cone N' Swirl">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
     </svg>
   </button>
 
-  <div id="cns-chat-window" class="cns-hidden" role="dialog" aria-label="Chat with Cone N' Swirl">
+  <div id="cns-chat-window" class="cns-hidden" role="dialog" aria-label="Cone N' Swirl chat and order">
     <div id="cns-chat-header">
       <div>
         <div id="cns-chat-header-title">Cone N' Swirl</div>
-        <div id="cns-chat-header-sub">Ask me anything — menu, locations, catering!</div>
+        <div id="cns-chat-header-sub">Ask about schedule, contact, the menu — or build with the button.</div>
       </div>
-      <button id="cns-chat-close" aria-label="Close chat">&times;</button>
+      <button id="cns-chat-close" aria-label="Close">&times;</button>
     </div>
     <div id="cns-chat-messages" aria-live="polite"></div>
     <div id="cns-chat-builder-wrap">
@@ -1547,16 +1558,18 @@ body {
       <div id="cns-build-panel" hidden aria-label="Button order builder"></div>
     </div>
     <div id="cns-chat-footer">
-      <input id="cns-chat-input" type="text" placeholder="Ask about our menu, location…" autocomplete="off" maxlength="400">
-      <button id="cns-chat-send">Send</button>
+      <p class="cns-footer-hint">Orders: tap <strong>Build My Order</strong>. Other questions: type below.</p>
+      <div class="cns-footer-row">
+        <input id="cns-chat-input" type="text" placeholder="Where are you Saturday? Phone number?" autocomplete="off" maxlength="400">
+        <button type="button" id="cns-chat-send">Send</button>
+      </div>
     </div>
   </div>
 
   <script>
     (function () {
-      // Full URL to the chat endpoint (must end with /chat — not just the .onrender.com host).
-      const API_URL = 'https://conenswirl-chatbot.onrender.com/chat';
-      const API_ROOT = API_URL.replace(/\/chat\/?$/i, '');
+      const API_ROOT = 'https://conenswirl-chatbot.onrender.com';
+      const API_URL = API_ROOT.replace(/\/$/, '') + '/chat';
 
       const bubble   = document.getElementById('cns-chat-bubble');
       const window_  = document.getElementById('cns-chat-window');
@@ -1608,7 +1621,7 @@ body {
         window_.classList.remove('cns-hidden');
         input.focus();
         if (feed.children.length === 0) {
-          addMessage("Hi! I'm Swirly your favorite chatbot. Ask me about our menu, this week's locations, catering, or use \"Build My Order\" button below to begin crafting your special Cone N' Swirl, Cup N' Swirl, or Cone only treat. — I'll turn your picks into a plain-English recap when you're done!", 'bot');
+          addMessage("Hi! I'm Swirly — ask me about this week's stops, contact info, or the menu. To build an order, tap Build My Order below (I won't take cone or cup picks typed here). When you're done tapping, you'll get a plain-English recap!", 'bot');
         }
       }
 
@@ -1631,10 +1644,10 @@ body {
         const typingEl = addMessage('Typing…', 'bot cns-msg-typing');
 
         try {
-          const res  = await fetch(API_URL, {
-            method:  'POST',
+          const res = await fetch(API_URL, {
+            method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ message: text, session_id: sessionId }),
+            body: JSON.stringify({ message: text, session_id: sessionId }),
           });
           var data = {};
           try {
@@ -1676,10 +1689,22 @@ body {
         if (!buildMenuData || !buildMenuData.steps) return [];
         var steps = buildMenuData.steps;
         var out = [];
-        var container = buildSelections.container;
         for (var i = 0; i < steps.length; i++) {
           var s = steps[i];
-          if (s.only_if && s.only_if.container && container !== s.only_if.container) continue;
+          if (s.only_if) {
+            var applies = true;
+            for (var k in s.only_if) {
+              if (!Object.prototype.hasOwnProperty.call(s.only_if, k)) continue;
+              var allowed = s.only_if[k];
+              var val = buildSelections[k];
+              if (Array.isArray(allowed)) {
+                if (allowed.indexOf(val) < 0) applies = false;
+              } else if (val !== allowed) {
+                applies = false;
+              }
+            }
+            if (!applies) continue;
+          }
           out.push(s);
         }
         return out;
@@ -1708,10 +1733,6 @@ body {
         function chip(val, label, selected) {
           var cls = 'cns-build-chip' + (selected ? ' cns-selected' : '');
           return '<button type="button" class="' + cls + '" data-value="' + escapeHtml(val) + '">' + escapeHtml(label) + '</button>';
-        }
-
-        if (step.id === 'stickems' && step.multi) {
-          html += '<button type="button" class="cns-build-chip" data-stickem-none="1">No Stick\'ems</button>';
         }
 
         for (var oi = 0; oi < step.options.length; oi++) {
@@ -1770,12 +1791,6 @@ body {
 
       function onChipClick(ev) {
         var t = ev.currentTarget;
-        if (t.getAttribute('data-stickem-none')) {
-          buildSelections.stickems = [];
-          buildStepIdx++;
-          renderBuildStep();
-          return;
-        }
         var steps = activeBuildSteps();
         var step = steps[buildStepIdx];
         var val = t.getAttribute('data-value');
@@ -1800,14 +1815,16 @@ body {
       async function submitBuildOrder() {
         var steps = activeBuildSteps();
         var order = {
-          container: buildSelections.container,
-          base: buildSelections.base,
-          filling: buildSelections.filling,
-          blends: buildSelections.blends || [],
-          stickems: buildSelections.stickems || [],
-          drizzles: buildSelections.drizzles || [],
+          order_type: buildSelections.order_type,
+          cone_type: buildSelections.cone_type != null ? buildSelections.cone_type : null,
+          base: buildSelections.base != null ? buildSelections.base : null,
+          filling: buildSelections.filling != null ? buildSelections.filling : null,
+          standard_blend: buildSelections.standard_blend != null ? buildSelections.standard_blend : null,
+          extra_blend: buildSelections.extra_blend != null ? buildSelections.extra_blend : null,
+          premium_blend: buildSelections.premium_blend != null ? buildSelections.premium_blend : null,
+          stick_em: buildSelections.stick_em != null ? buildSelections.stick_em : null,
+          drizzle: buildSelections.drizzle != null ? buildSelections.drizzle : null,
         };
-        if (buildSelections.container === 'cone') order.cone_type = buildSelections.cone_type;
 
         setWaiting(true);
         var typingEl = addMessage('Putting your order into words…', 'bot cns-msg-typing');
@@ -1857,7 +1874,7 @@ body {
             buildMenuData = await mr.json();
             if (!mr.ok || !buildMenuData.steps) throw new Error('bad menu');
           } catch (e) {
-            addMessage('I could not load the button menu from the server. You can still type your questions below!', 'bot');
+            addMessage('I could not load the button menu from the server. Try again in a moment, or follow @conenswirl on Instagram.', 'bot');
             return;
           }
         }
