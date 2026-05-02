@@ -1282,8 +1282,8 @@ body {
 
 
   <!-- ═══════════════════════════════════════════
-       CONE N' SWIRL — AI Chatbot Widget
-       Set API_URL to your Render chat endpoint (…onrender.com/chat) before going live.
+       CONE N' SWIRL — Order widget (tap-to-build + recap API on Render).
+       Set API_ROOT to your Render service base URL (no trailing slash), e.g. https://….onrender.com
   ═══════════════════════════════════════════ -->
   <style>
     #cns-chat-bubble {
@@ -1390,38 +1390,17 @@ body {
     .cns-msg-user { background: #f3764a; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
     .cns-msg-typing { font-style: italic; color: #999; }
 
-    #cns-chat-footer {
-      padding: 10px 12px;
+    .cns-chat-hint {
+      margin: 0;
+      padding: 10px 14px 14px;
       border-top: 1px solid #eee;
-      display: flex;
-      gap: 8px;
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: #555;
       flex-shrink: 0;
     }
-    #cns-chat-input {
-      flex: 1;
-      padding: 9px 14px;
-      border: 1px solid #ddd;
-      border-radius: 22px;
-      font-family: 'Source Sans 3', system-ui, sans-serif;
-      font-size: 0.875rem;
-      outline: none;
-      transition: border-color 0.15s;
-    }
-    #cns-chat-input:focus { border-color: #f3764a; }
-    #cns-chat-send {
-      padding: 9px 18px;
-      background: #f3764a;
-      color: #fff;
-      border: none;
-      border-radius: 22px;
-      font-family: 'Source Sans 3', system-ui, sans-serif;
-      font-size: 0.875rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: background 0.15s;
-      flex-shrink: 0;
-    }
-    #cns-chat-send:hover { background: #d95f2e; }
+    .cns-chat-hint a { color: #f3764a; font-weight: 600; }
     #cns-chat-send:disabled { background: #ccc; cursor: default; }
 
     #cns-chat-builder-wrap {
@@ -1511,42 +1490,35 @@ body {
     .cns-build-nav .cns-build-secondary:hover { background: #e0e0e0; }
   </style>
 
-  <button id="cns-chat-bubble" aria-label="Chat with us">
+  <button id="cns-chat-bubble" aria-label="Open order builder">
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
       <path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/>
     </svg>
   </button>
 
-  <div id="cns-chat-window" class="cns-hidden" role="dialog" aria-label="Chat with Cone N' Swirl">
+  <div id="cns-chat-window" class="cns-hidden" role="dialog" aria-label="Build your Cone N' Swirl order">
     <div id="cns-chat-header">
       <div>
         <div id="cns-chat-header-title">Cone N' Swirl</div>
-        <div id="cns-chat-header-sub">Ask me anything — menu, locations, catering!</div>
+        <div id="cns-chat-header-sub">Tap to build your order — we turn your picks into a recap.</div>
       </div>
-      <button id="cns-chat-close" aria-label="Close chat">&times;</button>
+      <button id="cns-chat-close" aria-label="Close">&times;</button>
     </div>
     <div id="cns-chat-messages" aria-live="polite"></div>
     <div id="cns-chat-builder-wrap">
       <button type="button" id="cns-build-toggle">Build My Order — tap options</button>
       <div id="cns-build-panel" hidden aria-label="Button order builder"></div>
     </div>
-    <div id="cns-chat-footer">
-      <input id="cns-chat-input" type="text" placeholder="Ask about our menu, location…" autocomplete="off" maxlength="400">
-      <button id="cns-chat-send">Send</button>
-    </div>
+    <p id="cns-chat-hint" class="cns-chat-hint">Questions about the menu or where we’re parked? Follow <a href="https://www.instagram.com/conenswirl/" target="_blank" rel="noopener noreferrer">@conenswirl</a> on Instagram.</p>
   </div>
 
   <script>
     (function () {
-      // Full URL to the chat endpoint (must end with /chat — not just the .onrender.com host).
-      const API_URL = 'https://conenswirl-chatbot.onrender.com/chat';
-      const API_ROOT = API_URL.replace(/\/chat\/?$/i, '');
+      const API_ROOT = 'https://conenswirl-chatbot.onrender.com';
 
       const bubble   = document.getElementById('cns-chat-bubble');
       const window_  = document.getElementById('cns-chat-window');
       const closeBtn = document.getElementById('cns-chat-close');
-      const input    = document.getElementById('cns-chat-input');
-      const sendBtn  = document.getElementById('cns-chat-send');
       const feed     = document.getElementById('cns-chat-messages');
       const buildToggle = document.getElementById('cns-build-toggle');
       const buildPanel  = document.getElementById('cns-build-panel');
@@ -1580,8 +1552,6 @@ body {
 
       function setWaiting(state) {
         isWaiting = state;
-        sendBtn.disabled = state;
-        input.disabled   = state;
         buildToggle.disabled = state;
         var nav = buildPanel.querySelectorAll('button');
         for (var ni = 0; ni < nav.length; ni++) nav[ni].disabled = state;
@@ -1590,9 +1560,9 @@ body {
       function openChat() {
         isOpen = true;
         window_.classList.remove('cns-hidden');
-        input.focus();
+        buildToggle.focus();
         if (feed.children.length === 0) {
-          addMessage("Hi! I'm Swirly your favorite chatbot. Ask me about our menu, this week's locations, catering, or use \"Build My Order\" button below to begin crafting your special Cone N' Swirl, Cup N' Swirl, or Cone only treat. — I'll turn your picks into a plain-English recap when you're done!", 'bot');
+          addMessage("Hi! I'm Swirly. Use Build My Order below to tap through a Cone N' Swirl, Cup N' Swirl, or Cone Only — I'll turn your picks into a plain-English recap when you're done.", 'bot');
         }
       }
 
@@ -1603,58 +1573,6 @@ body {
 
       bubble.addEventListener('click', function () { return isOpen ? closeChat() : openChat(); });
       closeBtn.addEventListener('click', closeChat);
-
-      async function sendMessage() {
-        const text = input.value.trim();
-        if (!text || isWaiting) return;
-
-        addMessage(text, 'user');
-        input.value = '';
-        setWaiting(true);
-
-        const typingEl = addMessage('Typing…', 'bot cns-msg-typing');
-
-        try {
-          const res  = await fetch(API_URL, {
-            method:  'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body:    JSON.stringify({ message: text, session_id: sessionId }),
-          });
-          var data = {};
-          try {
-            data = await res.json();
-          } catch (parseErr) {
-            typingEl.remove();
-            addMessage("Hmm — I couldn't read that reply. Try again in a moment?", 'bot');
-            return;
-          }
-
-          typingEl.remove();
-
-          if (data.session_id) {
-            sessionId = data.session_id;
-            sessionStorage.setItem('cns_session_id', sessionId);
-          }
-
-          if (!res.ok) {
-            addMessage(data.response || 'Sorry, that request failed. Try again?', 'bot');
-            return;
-          }
-
-          addMessage(data.response || 'Sorry, I had trouble with that. Try again!', 'bot');
-        } catch (_) {
-          typingEl.remove();
-          addMessage("Oops — something went wrong. Try again or follow @conenswirl on Instagram!", 'bot');
-        } finally {
-          setWaiting(false);
-          input.focus();
-        }
-      }
-
-      sendBtn.addEventListener('click', sendMessage);
-      input.addEventListener('keydown', function (e) {
-        if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
-      });
 
       function activeBuildSteps() {
         if (!buildMenuData || !buildMenuData.steps) return [];
@@ -1823,7 +1741,7 @@ body {
           addMessage('Could not reach the server. Check your connection and try again.', 'bot');
         } finally {
           setWaiting(false);
-          input.focus();
+          buildToggle.focus();
         }
       }
 
@@ -1845,7 +1763,7 @@ body {
             buildMenuData = await mr.json();
             if (!mr.ok || !buildMenuData.steps) throw new Error('bad menu');
           } catch (e) {
-            addMessage('I could not load the button menu from the server. You can still type your questions below!', 'bot');
+            addMessage('I could not load the button menu from the server. Try again in a moment, or follow @conenswirl on Instagram.', 'bot');
             return;
           }
         }
