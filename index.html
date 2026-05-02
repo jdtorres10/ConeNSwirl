@@ -1660,10 +1660,22 @@ body {
         if (!buildMenuData || !buildMenuData.steps) return [];
         var steps = buildMenuData.steps;
         var out = [];
-        var container = buildSelections.container;
         for (var i = 0; i < steps.length; i++) {
           var s = steps[i];
-          if (s.only_if && s.only_if.container && container !== s.only_if.container) continue;
+          if (s.only_if) {
+            var applies = true;
+            for (var k in s.only_if) {
+              if (!Object.prototype.hasOwnProperty.call(s.only_if, k)) continue;
+              var allowed = s.only_if[k];
+              var val = buildSelections[k];
+              if (Array.isArray(allowed)) {
+                if (allowed.indexOf(val) < 0) applies = false;
+              } else if (val !== allowed) {
+                applies = false;
+              }
+            }
+            if (!applies) continue;
+          }
           out.push(s);
         }
         return out;
@@ -1692,10 +1704,6 @@ body {
         function chip(val, label, selected) {
           var cls = 'cns-build-chip' + (selected ? ' cns-selected' : '');
           return '<button type="button" class="' + cls + '" data-value="' + escapeHtml(val) + '">' + escapeHtml(label) + '</button>';
-        }
-
-        if (step.id === 'stickems' && step.multi) {
-          html += '<button type="button" class="cns-build-chip" data-stickem-none="1">No Stick\'ems</button>';
         }
 
         for (var oi = 0; oi < step.options.length; oi++) {
@@ -1754,12 +1762,6 @@ body {
 
       function onChipClick(ev) {
         var t = ev.currentTarget;
-        if (t.getAttribute('data-stickem-none')) {
-          buildSelections.stickems = [];
-          buildStepIdx++;
-          renderBuildStep();
-          return;
-        }
         var steps = activeBuildSteps();
         var step = steps[buildStepIdx];
         var val = t.getAttribute('data-value');
@@ -1784,14 +1786,16 @@ body {
       async function submitBuildOrder() {
         var steps = activeBuildSteps();
         var order = {
-          container: buildSelections.container,
-          base: buildSelections.base,
-          filling: buildSelections.filling,
-          blends: buildSelections.blends || [],
-          stickems: buildSelections.stickems || [],
-          drizzles: buildSelections.drizzles || [],
+          order_type: buildSelections.order_type,
+          cone_type: buildSelections.cone_type != null ? buildSelections.cone_type : null,
+          base: buildSelections.base != null ? buildSelections.base : null,
+          filling: buildSelections.filling != null ? buildSelections.filling : null,
+          standard_blend: buildSelections.standard_blend != null ? buildSelections.standard_blend : null,
+          extra_blend: buildSelections.extra_blend != null ? buildSelections.extra_blend : null,
+          premium_blend: buildSelections.premium_blend != null ? buildSelections.premium_blend : null,
+          stick_em: buildSelections.stick_em != null ? buildSelections.stick_em : null,
+          drizzle: buildSelections.drizzle != null ? buildSelections.drizzle : null,
         };
-        if (buildSelections.container === 'cone') order.cone_type = buildSelections.cone_type;
 
         setWaiting(true);
         var typingEl = addMessage('Putting your order into words…', 'bot cns-msg-typing');

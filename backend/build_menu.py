@@ -1,202 +1,255 @@
-"""Structured build-your-own menu (matches knowledge_base/menu_details.txt)."""
+"""Structured build-your-own menu (aligned with knowledge_base/menu_details.txt)."""
 
 from __future__ import annotations
 
-PREMIUM_BLENDS = frozenset({
+# Premium blend add-ons (per menu; used in help copy and recap context).
+PREMIUM_BLEND_NAMES = frozenset({
     "Brownie",
     "Strawberry",
     "Blueberry",
     "Mango",
+    "Raspberry",
+    "Pineapple",
 })
+
+_STANDARD_BLEND_OPTIONS = [
+    {"value": "Coffee", "label": "Coffee"},
+    {"value": "Mazapan", "label": "Mazapan"},
+    {"value": "Oreo", "label": "Oreo"},
+    {"value": "Cookie Dough", "label": "Cookie Dough"},
+    {"value": "Nutter Butter", "label": "Nutter Butter"},
+    {"value": "Pecans", "label": "Pecans"},
+    {"value": "Walnuts", "label": "Walnuts"},
+    {"value": "Almonds", "label": "Almonds"},
+    {"value": "Reeses", "label": "Reeses"},
+    {"value": "Sprinkles", "label": "Sprinkles"},
+    {"value": "Pretzels", "label": "Pretzels"},
+    {"value": "Graham Cracker", "label": "Graham Cracker"},
+    {"value": "No Blend", "label": "No Blend"},
+]
+
+_EXTRA_BLEND_OPTIONS = [
+    {"value": "Coffee", "label": "Coffee"},
+    {"value": "Mazapan", "label": "Mazapan"},
+    {"value": "Oreo", "label": "Oreo"},
+    {"value": "Cookie Dough", "label": "Cookie Dough"},
+    {"value": "Nutter Butter", "label": "Nutter Butter"},
+    {"value": "Pecans", "label": "Pecans"},
+    {"value": "Walnuts", "label": "Walnuts"},
+    {"value": "Almonds", "label": "Almonds"},
+    {"value": "Reeses", "label": "Reeses"},
+    {"value": "Sprinkles", "label": "Sprinkles"},
+    {"value": "Pretzels", "label": "Pretzels"},
+    {"value": "Graham Cracker", "label": "Graham Cracker"},
+    {"value": "No Extra Blend", "label": "No Extra Blend"},
+]
+
+_PREMIUM_BLEND_OPTIONS = [
+    {"value": "Brownie", "label": "Brownie (+$1.25)"},
+    {"value": "Strawberry", "label": "Strawberry (+$1.25)"},
+    {"value": "Blueberry", "label": "Blueberry (+$1.25)"},
+    {"value": "Mango", "label": "Mango (+$1.25)"},
+    {"value": "Raspberry", "label": "Raspberry (+$1.25)"},
+    {"value": "Pineapple", "label": "Pineapple (+$1.25)"},
+    {"value": "No Premium Blend", "label": "No Premium Blend"},
+]
+
+_STICK_EM_OPTIONS = [
+    {"value": "Oreo", "label": "Oreo"},
+    {"value": "Nutter Butter", "label": "Nutter Butter"},
+    {"value": "Pretzel Rod", "label": "Pretzel Rod"},
+    {"value": "Reeses", "label": "Reeses"},
+    {"value": "Graham Cracker", "label": "Graham Cracker"},
+    {"value": "Kit Kat", "label": "Kit Kat"},
+    {"value": "Nilla Wafers", "label": "Nilla Wafers"},
+    {"value": "No Stick 'Em", "label": "No Stick 'Em"},
+]
+
+_DRIZZLE_OPTIONS = [
+    {"value": "Chocolate", "label": "Chocolate"},
+    {"value": "Strawberry", "label": "Strawberry"},
+    {"value": "Salted Caramel", "label": "Salted Caramel"},
+    {"value": "Caramel", "label": "Caramel"},
+    {"value": "No Drizzle", "label": "No Drizzle"},
+]
+
+_CONE_TYPE_OPTIONS = [
+    {"value": "Cinnamon Sugar", "label": "Cinnamon Sugar"},
+    {"value": "Oreo", "label": "Oreo"},
+    {"value": "Graham Cracker", "label": "Graham Cracker"},
+    {"value": "Plain", "label": "Plain"},
+]
+
+_BASE_OPTIONS = [
+    {"value": "Vanilla", "label": "Vanilla"},
+    {"value": "Chocolate", "label": "Chocolate"},
+]
+
+_FILLING_OPTIONS = [
+    {"value": "Nutella", "label": "Nutella"},
+    {"value": "Cookie Butter", "label": "Cookie Butter"},
+    {"value": "Peanut Butter", "label": "Peanut Butter"},
+    {"value": "No Filling", "label": "No Filling"},
+]
 
 BUILD_MENU = {
     "steps": [
         {
-            "id": "container",
-            "label": "Cone or cup?",
+            "id": "order_type",
+            "label": "What are you building?",
             "multi": False,
+            "help": "Cone N' Swirl: 8 steps. Cup N' Swirl: 6 steps (no cone, no filling). Cone Only: 3 steps (no ice cream).",
             "options": [
-                {"value": "cone", "label": "Chimney cone"},
-                {"value": "cup", "label": "Cup (same build, no cone)"},
+                {
+                    "value": "cone_n_swirl",
+                    "label": "Cone N' Swirl",
+                },
+                {
+                    "value": "cup_n_swirl",
+                    "label": "Cup N' Swirl",
+                },
+                {
+                    "value": "cone_only",
+                    "label": "Cone Only (no ice cream)",
+                },
             ],
         },
         {
             "id": "cone_type",
-            "label": "Cone flavor",
+            "label": "Step 1 — Choose your cone",
             "multi": False,
-            "only_if": {"container": "cone"},
-            "options": [
-                {"value": "Cinnamon Sugar", "label": "Cinnamon Sugar"},
-                {"value": "Oreo", "label": "Oreo"},
-                {"value": "Graham Cracker", "label": "Graham Cracker"},
-                {"value": "Plain", "label": "Plain"},
-            ],
+            "only_if": {"order_type": ["cone_n_swirl", "cone_only"]},
+            "options": _CONE_TYPE_OPTIONS,
         },
         {
             "id": "base",
-            "label": "Ice cream base",
+            "label": "Choose your ice cream base (Swirl Base)",
             "multi": False,
-            "options": [
-                {"value": "Vanilla", "label": "Vanilla"},
-                {"value": "Chocolate", "label": "Chocolate"},
-            ],
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "options": _BASE_OPTIONS,
         },
         {
             "id": "filling",
-            "label": "Filling (optional)",
+            "label": "Choose your filling (included)",
             "multi": False,
-            "options": [
-                {"value": "Nutella", "label": "Nutella"},
-                {"value": "Cookie Butter", "label": "Cookie Butter"},
-                {"value": "Peanut Butter", "label": "Peanut Butter"},
-                {"value": "No Filling", "label": "No filling"},
-            ],
+            "only_if": {"order_type": ["cone_n_swirl", "cone_only"]},
+            "options": _FILLING_OPTIONS,
         },
         {
-            "id": "blends",
-            "label": "Blend mix-ins",
-            "multi": True,
-            "min": 1,
-            "help": "Pick one or more. Brownie, Strawberry, Blueberry, and Mango are premium (+$1.50 each).",
-            "options": [
-                {"value": "Coffee", "label": "Coffee", "premium": False},
-                {"value": "Mazapan", "label": "Mazapan", "premium": False},
-                {"value": "Oreo", "label": "Oreo", "premium": False},
-                {"value": "Cookie Dough", "label": "Cookie Dough", "premium": False},
-                {"value": "Nutter Butter", "label": "Nutter Butter", "premium": False},
-                {"value": "Pecans", "label": "Pecans", "premium": False},
-                {"value": "Walnuts", "label": "Walnuts", "premium": False},
-                {"value": "Almonds", "label": "Almonds", "premium": False},
-                {"value": "Reeses", "label": "Reeses", "premium": False},
-                {"value": "Sprinkles", "label": "Sprinkles", "premium": False},
-                {"value": "Pretzels", "label": "Pretzels", "premium": False},
-                {"value": "Graham Cracker", "label": "Graham Cracker (blend)", "premium": False},
-                {"value": "Brownie", "label": "Brownie (+$1.50)", "premium": True},
-                {"value": "Strawberry", "label": "Strawberry (+$1.50)", "premium": True},
-                {"value": "Blueberry", "label": "Blueberry (+$1.50)", "premium": True},
-                {"value": "Mango", "label": "Mango (+$1.50)", "premium": True},
-            ],
+            "id": "standard_blend",
+            "label": "Choose your blend (1 free)",
+            "multi": False,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "help": "Traditional standard blends are included; premium add-ons are a later step.",
+            "options": _STANDARD_BLEND_OPTIONS,
         },
         {
-            "id": "stickems",
-            "label": "Stick'em toppings",
-            "multi": True,
-            "min": 0,
-            "help": "Optional — pick any or tap None.",
-            "options": [
-                {"value": "Oreo", "label": "Oreo"},
-                {"value": "Nutter Butter", "label": "Nutter Butter"},
-                {"value": "Pretzel Rod", "label": "Pretzel Rod"},
-                {"value": "Reeses", "label": "Reeses"},
-                {"value": "Graham Cracker", "label": "Graham Cracker (Stick'em)"},
-                {"value": "Kit Kat", "label": "Kit Kat"},
-                {"value": "Nilla Wafers", "label": "Nilla Wafers"},
-            ],
+            "id": "extra_blend",
+            "label": "Extra standard blend (optional, +$0.75)",
+            "multi": False,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "options": _EXTRA_BLEND_OPTIONS,
         },
         {
-            "id": "drizzles",
-            "label": "Drizzle",
-            "multi": True,
-            "min": 1,
-            "help": "Pick one or more ($0.50 each).",
-            "options": [
-                {"value": "Chocolate", "label": "Chocolate"},
-                {"value": "Strawberry", "label": "Strawberry"},
-                {"value": "Salted Caramel", "label": "Salted Caramel"},
-                {"value": "Caramel", "label": "Caramel"},
-            ],
+            "id": "premium_blend",
+            "label": "Premium blend (optional, +$1.25 each)",
+            "multi": False,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "options": _PREMIUM_BLEND_OPTIONS,
+        },
+        {
+            "id": "stick_em",
+            "label": "Stick'em (optional, +$0.99)",
+            "multi": False,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "options": _STICK_EM_OPTIONS,
+        },
+        {
+            "id": "drizzle",
+            "label": "Drizzle (optional, +$0.75)",
+            "multi": False,
+            "options": _DRIZZLE_OPTIONS,
         },
     ],
 }
 
 
-def _allowed_values(step_id: str) -> frozenset[str]:
-    for step in BUILD_MENU["steps"]:
-        if step["id"] == step_id:
-            return frozenset(o["value"] for o in step["options"])
-    return frozenset()
+def _values(options: list[dict]) -> frozenset[str]:
+    return frozenset(o["value"] for o in options)
+
+
+_ALLOWED = {
+    "order_type": frozenset({"cone_n_swirl", "cup_n_swirl", "cone_only"}),
+    "cone_type": _values(_CONE_TYPE_OPTIONS),
+    "base": _values(_BASE_OPTIONS),
+    "filling": _values(_FILLING_OPTIONS),
+    "standard_blend": _values(_STANDARD_BLEND_OPTIONS),
+    "extra_blend": _values(_EXTRA_BLEND_OPTIONS),
+    "premium_blend": _values(_PREMIUM_BLEND_OPTIONS),
+    "stick_em": _values(_STICK_EM_OPTIONS),
+    "drizzle": _values(_DRIZZLE_OPTIONS),
+}
 
 
 def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
     """
     Returns (normalized_order, error_message).
-    normalized_order is JSON-serializable for the LLM.
+    normalized_order is JSON-serializable for the LLM recap.
     """
     if not isinstance(raw, dict):
         return None, "order must be an object"
 
-    container = raw.get("container")
-    if container not in ("cone", "cup"):
-        return None, "container must be cone or cup"
+    order_type = raw.get("order_type")
+    if order_type not in _ALLOWED["order_type"]:
+        return None, "order_type must be cone_n_swirl, cup_n_swirl, or cone_only"
 
-    cone_type = raw.get("cone_type")
-    if container == "cone":
-        allowed = _allowed_values("cone_type")
-        if cone_type not in allowed:
-            return None, "invalid or missing cone_type for cone order"
+    def req_str(key: str, allowed: frozenset[str]) -> tuple[str | None, str | None]:
+        v = raw.get(key)
+        if not isinstance(v, str) or v not in allowed:
+            return None, f"invalid or missing {key}"
+        return v, None
+
+    out: dict = {"order_type": order_type}
+
+    if order_type in ("cone_n_swirl", "cone_only"):
+        v, err = req_str("cone_type", _ALLOWED["cone_type"])
+        if err:
+            return None, err
+        out["cone_type"] = v
     else:
-        cone_type = None
-        if cone_type is not None and raw.get("cone_type") not in (None, ""):
-            pass  # ignore stray cone_type for cup
+        out["cone_type"] = None
 
-    base = raw.get("base")
-    if base not in _allowed_values("base"):
-        return None, "invalid or missing base"
+    if order_type in ("cone_n_swirl", "cup_n_swirl"):
+        v, err = req_str("base", _ALLOWED["base"])
+        if err:
+            return None, err
+        out["base"] = v
+    else:
+        out["base"] = None
 
-    filling = raw.get("filling")
-    if filling not in _allowed_values("filling"):
-        return None, "invalid or missing filling"
+    if order_type in ("cone_n_swirl", "cone_only"):
+        v, err = req_str("filling", _ALLOWED["filling"])
+        if err:
+            return None, err
+        out["filling"] = v
+    else:
+        out["filling"] = None
 
-    blends = raw.get("blends")
-    if not isinstance(blends, list) or len(blends) < 1:
-        return None, "pick at least one blend"
-    allowed_blends = _allowed_values("blends")
-    norm_blends = []
-    seen = set()
-    for b in blends:
-        if not isinstance(b, str) or b not in allowed_blends:
-            return None, f"invalid blend: {b!r}"
-        if b in seen:
-            continue
-        seen.add(b)
-        norm_blends.append({"name": b, "premium": b in PREMIUM_BLENDS})
+    if order_type in ("cone_n_swirl", "cup_n_swirl"):
+        for key in ("standard_blend", "extra_blend", "premium_blend", "stick_em"):
+            v, err = req_str(key, _ALLOWED[key])
+            if err:
+                return None, err
+            out[key] = v
+    else:
+        out["standard_blend"] = None
+        out["extra_blend"] = None
+        out["premium_blend"] = None
+        out["stick_em"] = None
 
-    stickems = raw.get("stickems")
-    if stickems is None:
-        stickems = []
-    if not isinstance(stickems, list):
-        return None, "stickems must be a list"
-    allowed_st = _allowed_values("stickems")
-    norm_st = []
-    seen_st = set()
-    for s in stickems:
-        if not isinstance(s, str) or s not in allowed_st:
-            return None, f"invalid Stick'em: {s!r}"
-        if s in seen_st:
-            continue
-        seen_st.add(s)
-        norm_st.append(s)
+    v, err = req_str("drizzle", _ALLOWED["drizzle"])
+    if err:
+        return None, err
+    out["drizzle"] = v
 
-    drizzles = raw.get("drizzles")
-    if not isinstance(drizzles, list) or len(drizzles) < 1:
-        return None, "pick at least one drizzle"
-    allowed_dr = _allowed_values("drizzles")
-    norm_dr = []
-    seen_dr = set()
-    for d in drizzles:
-        if not isinstance(d, str) or d not in allowed_dr:
-            return None, f"invalid drizzle: {d!r}"
-        if d in seen_dr:
-            continue
-        seen_dr.add(d)
-        norm_dr.append(d)
-
-    return {
-        "container": container,
-        "cone_type": cone_type,
-        "base": base,
-        "filling": filling,
-        "blends": norm_blends,
-        "stickems": norm_st,
-        "drizzles": norm_dr,
-    }, None
+    return out, None

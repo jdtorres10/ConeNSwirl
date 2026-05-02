@@ -31,8 +31,8 @@ through ONLY the steps for that type:
 3) Cone Only (3 steps, no ice cream): Cone, Filling, Drizzle. Base $6.99 (cone + filling included; no ice cream, no blends, no stick 'ems).
 If a customer says "no ice cream" or "just a cone," route them to Cone Only.
 
-The website also offers a tap-to-pick button builder for cone/cup orders. If chat history \
-includes a structured order note from that flow, treat it as their finalized picks; you may \
+The website also offers a tap-to-pick button builder for all three order types. If chat history \
+includes a structured order note from that flow (order_type and the listed fields), treat it as their finalized picks; you may \
 answer follow-ups (price questions, allergies, "what did I pick?") using that order plus \
 retrieved context.
 
@@ -46,6 +46,24 @@ latest message is a short choice (cone, base, filling name, blend, topping, driz
 or "no filling"/"none"): treat it as their pick for the current step. Briefly confirm, \
 then move forward only to the next step with options from context. Do not restart \
 from step 1 unless they say start over, new cone, or from the beginning.
+
+Mixed builds (some yes, some no): Customers often want part of the menu but not all of it — \
+e.g. cone + swirl base + filling + one standard blend + strawberry drizzle, but no extra \
+standard blend, no premium blend, and no Stick'em. Treat phrases like "no drizzle", "skip \
+the Stick'em", "no premium", "nothing on top", "I'm good without the extra blend", "just \
+one blend", "nah on toppings" as explicit refusals for the step you are on (or the step \
+they clearly name). Never invent or assume an add-on they declined. Optional steps in \
+the menu include explicit "No …" choices in context — map casual refusals to those ideas \
+and confirm in plain words.
+
+If they contradict an earlier pick ("actually no drizzle"), update what you remember and \
+confirm once briefly. If you are unsure which step they are answering, ask one short question.
+
+Recap when they are done: When they say they are finished (e.g. "that's it", "that's my \
+order", "what did I get?", "summarize") or after the last step for their order type, give \
+a compact recap that lists every step that applies to their order type — each line should \
+show either what they chose or that they skipped / said no for optional parts (extra blend, \
+premium blend, Stick'em, drizzle, etc.). That recap is how they catch mistakes before the truck.
 
 Understanding customer wording (important): Never insist on exact capitalization or \
 spelling. Treat oreo / OREO / Oreo the same; treat lets and let's the same; treat \
@@ -103,7 +121,7 @@ def build_chain():
     llm = ChatAnthropic(
         model="claude-haiku-4-5-20251001",
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
-        temperature=0.35,
+        temperature=0.28,
         max_tokens=768,
     )
 
@@ -111,13 +129,15 @@ def build_chain():
         ("system", (
             "Given the chat history and the latest user message, produce ONE standalone "
             "line suitable for searching a Cone N' Swirl ice cream truck menu (cones, "
-            "bases, fillings, blends, toppings, drizzles, how to build a cone).\n"
+            "bases, fillings, blends, extra blends, premium blends, Stick'ems, drizzles, "
+            "how to build a cone cup or cone only order).\n"
             "- If the latest message is already a clear question, return it unchanged.\n"
-            "- If the user is mid cone-build (you asked for a step) and they reply with "
+            "- If the user is mid order-build (you asked for a step) and they reply with "
             "a short option (any capitalization, e.g. 'nutella', 'CINNAMON SUGAR', "
-            "'vanilla', 'no filling'), "
+            "'vanilla', 'no filling', 'no premium blend', 'skip Stick em', "
+            "'no extra blend', 'no drizzle', 'nothing on top'), "
             "rewrite into an explicit search phrase that includes that choice AND that "
-            "they are building a cone / next menu step — do NOT turn it into an unrelated "
+            "they are building an order / the relevant menu step — do NOT turn it into an unrelated "
             "question about the word itself.\n"
             "Do NOT answer the user. Output only the standalone line, no preamble."
         )),
@@ -143,9 +163,11 @@ picking their build using the on-screen buttons (not free-typed chat). Their exa
 in the JSON below — do not invent add-ons they did not pick.
 
 Turn this into a friendly plain-English recap they can read at the window: what they're getting, \
-in a natural order (vessel, cone if any, base, filling, blends, Stick'ems, drizzles). If they \
-chose no filling or no Stick'ems, say so briefly. Mention that pricing is confirmed at the truck \
-if you are not listing dollar totals.
+in a natural order. The JSON uses order_type (cone_n_swirl, cup_n_swirl, or cone_only) and fields \
+cone_type, base, filling, standard_blend, extra_blend, premium_blend, stick_em, drizzle — use \
+only the keys that are non-null. If they chose no filling, no extra blend, no premium blend, \
+no Stick'em, or no drizzle, say so briefly using the exact meaning of those choices. Mention that \
+pricing is confirmed at the truck if you are not listing dollar totals.
 
 Output rules: plain text only — no Markdown (no asterisks, no hash headings, no backticks). \
 Short paragraphs; warm San Antonio ice-cream-truck energy.
