@@ -5,7 +5,7 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, AIMessage
-from chatbot import build_chain, summarize_build_order
+from chatbot import build_chain, coerce_chain_answer_to_text, summarize_build_order
 from build_menu import BUILD_MENU, validate_and_normalize_order
 
 load_dotenv()
@@ -112,8 +112,8 @@ def chat():
         result = rag_chain.invoke(
             {"input": user_message, "chat_history": history_for_model}
         )
-        answer = result.get("answer") or ""
-        if not str(answer).strip():
+        answer = coerce_chain_answer_to_text(result.get("answer"))
+        if not answer:
             raise ValueError("empty model answer")
 
         history.append(HumanMessage(content=user_message))

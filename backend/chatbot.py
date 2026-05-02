@@ -1,5 +1,7 @@
 import json
 import os
+from typing import Any
+
 from langchain_anthropic import ChatAnthropic
 from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_community.vectorstores import FAISS
@@ -11,6 +13,37 @@ from langchain_core.documents import Document
 from langchain_community.document_loaders import TextLoader
 
 KB_PATH = os.path.join(os.path.dirname(__file__), "..", "knowledge_base")
+
+
+def coerce_chain_answer_to_text(answer: Any) -> str:
+    """
+    Retrieval + stuff-documents chains may return a str or an AIMessage with string or
+    block-list content. Session history and JSON responses must use plain strings only —
+    storing an AIMessage inside AIMessage breaks later turns.
+    """
+    if answer is None:
+        return ""
+    if isinstance(answer, str):
+        return answer.strip()
+    content = getattr(answer, "content", None)
+    if content is None:
+        return str(answer).strip()
+    if isinstance(content, str):
+        return content.strip()
+    if isinstance(content, list):
+        parts: list[str] = []
+        for block in content:
+            if isinstance(block, dict):
+                if block.get("type") == "text" and "text" in block:
+                    parts.append(str(block["text"]))
+                elif "text" in block:
+                    parts.append(str(block["text"]))
+            else:
+                t = getattr(block, "text", None)
+                parts.append(t if isinstance(t, str) else str(block))
+        return "".join(parts).strip()
+    return str(content).strip()
+
 
 SYSTEM_PROMPT = """You are a friendly and enthusiastic assistant for Cone N' Swirl, \
 a unique ice cream truck in San Antonio, TX. We serve blended ice cream in \
