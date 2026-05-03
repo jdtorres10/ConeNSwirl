@@ -5,7 +5,7 @@
       "schedule_heading": "Tuesday May 5",
       "day_short": "Tue",
       "date_short": "5/5",
-      "location": "Event Community",
+      "location": "Ventana Community",
       "address": "1386 Lobo Pk, Bulverde, TX 78163, USA",
       "map_url": "https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
@@ -47,9 +47,7 @@
       "hours": "10:00 AM – 4:00 PM"
     }
   ],
-  "special_events": [
-    "June 1: Concert Series at Amphitheater"
-  ],
+  "special_events": [],
   "seasonal_notes": "During summer months (June-August), we add Thursday evening service at the Beach Boardwalk from 6:00 PM - 9:00 PM.\n\nDuring winter months (December-February), we may adjust hours based on weather. Check our social media for daily updates.",
   "find_us": "We post our daily location on Instagram and Facebook. Follow us for real-time updates, especially during weather changes or special pop-up locations."
 }

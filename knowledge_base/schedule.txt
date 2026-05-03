@@ -3,7 +3,7 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 === THIS WEEK'S SCHEDULE ===
 
 Tuesday May 5:
-- Location: Event Community
+- Location: Ventana Community
 - Address: 1386 Lobo Pk, Bulverde, TX 78163, USA
 - Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA
 - Time: 5:00 PM – 8:00 PM
@@ -31,10 +31,6 @@ Saturday May 9:
 - Address: 10 Cascade Cavern, Boerne, TX 78015, USA
 - Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10%20Cascade%20Cavern%2C%20Boerne%2C%20TX%2078015%2C%20USA
 - Time: 10:00 AM – 4:00 PM
-
-=== UPCOMING SPECIAL EVENTS ===
-
-June 1: Concert Series at Amphitheater
 
 === SEASONAL SCHEDULE NOTES ===
 
