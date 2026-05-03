@@ -10,7 +10,7 @@ window.$RefreshSig$ = () => (type) => type;</script>
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>CONE N' SWIRL — Ice Cream Truck</title>
     <meta name="description" content="CONE N&#39; SWIRL ice cream truck — build your own cone or cup with cones, fillings, blends, Stick &#39;Ems, and drizzles. Follow @conenswirl on Instagram, Facebook, and TikTok for locations and pop-ups.">
     <meta name="theme-color" content="#f3764a">
@@ -1426,6 +1426,7 @@ body {
     }
     #cns-chat-input {
       flex: 1;
+      min-width: 0;
       padding: 9px 14px;
       border: 1px solid #ddd;
       border-radius: 22px;
@@ -1536,6 +1537,39 @@ body {
       color: #333;
     }
     .cns-build-nav .cns-build-secondary:hover { background: #e0e0e0; }
+
+    /* Mobile: full-width bottom sheet — thumb zone, safe areas, no floating card gap */
+    @media (max-width: 639px) {
+      #cns-chat-window {
+        left: 0;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        max-width: none;
+        height: min(92dvh, 92vh);
+        max-height: min(92dvh, 92vh);
+        border-radius: 16px 16px 0 0;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.2);
+      }
+      #cns-chat-window.cns-hidden {
+        transform: translateY(100%);
+      }
+      #cns-chat-messages {
+        -webkit-overflow-scrolling: touch;
+      }
+      #cns-chat-footer {
+        padding-bottom: max(12px, env(safe-area-inset-bottom, 0px));
+      }
+      #cns-chat-bubble {
+        bottom: max(20px, env(safe-area-inset-bottom, 0px));
+        right: max(20px, env(safe-area-inset-right, 0px));
+      }
+      body.cns-chat-open #cns-chat-bubble {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
   </style>
 
   <button id="cns-chat-bubble" aria-label="Chat and order with Cone N' Swirl">
@@ -1560,7 +1594,7 @@ body {
     <div id="cns-chat-footer">
       <p class="cns-footer-hint">Orders: tap <strong>Build My Order</strong>. Other questions: type below.</p>
       <div class="cns-footer-row">
-        <input id="cns-chat-input" type="text" placeholder="Where are you Saturday? Phone number?" autocomplete="off" maxlength="400">
+        <input id="cns-chat-input" type="text" placeholder="Stops, menu, or phone?" autocomplete="off" maxlength="400">
         <button type="button" id="cns-chat-send">Send</button>
       </div>
     </div>
@@ -1618,6 +1652,7 @@ body {
 
       function openChat() {
         isOpen = true;
+        document.body.classList.add('cns-chat-open');
         window_.classList.remove('cns-hidden');
         input.focus();
         if (feed.children.length === 0) {
@@ -1627,6 +1662,7 @@ body {
 
       function closeChat() {
         isOpen = false;
+        document.body.classList.remove('cns-chat-open');
         window_.classList.add('cns-hidden');
       }
 
