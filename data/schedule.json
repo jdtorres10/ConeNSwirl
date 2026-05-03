@@ -2,44 +2,16 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Wednesday April 29",
-      "day_short": "Wed",
-      "date_short": "4/29",
-      "location": "Regent Park",
-      "address": "275 Tilbury Blvd, Boerne, TX 78006, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA",
-      "hours": "5pm – 8pm"
-    },
-    {
-      "schedule_heading": "Thursday April 30",
-      "day_short": "Thu",
-      "date_short": "4/30",
-      "location": "Brookstone Creek",
-      "address": "5030 Millrace Lndg, San Antonio, TX 78261",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=5030%20Millrace%20Lndg%2C%20San%20Antonio%2C%20TX%2078261",
-      "hours": "5pm – 8pm"
-    },
-    {
-      "schedule_heading": "Friday May 1",
-      "day_short": "Fri",
-      "date_short": "5/1",
-      "location": "Silos",
-      "address": "6450 Silos View, San Antonio, TX 78252, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=6450%20Silos%20View%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
-      "hours": "5pm – 8pm"
-    },
-    {
-      "schedule_heading": "Saturday May 2",
-      "day_short": "Sat",
-      "date_short": "5/2",
-      "location": "Los Cielos at Brooks",
-      "address": "7722 Calle Coyote, San Antonio, TX 78235, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=7722%20Calle%20Coyote%2C%20San%20Antonio%2C%20TX%2078235%2C%20USA",
-      "hours": "4pm – 8pm"
+      "schedule_heading": "Tuesday May 5",
+      "day_short": "Tue",
+      "date_short": "5/5",
+      "location": "Event Community",
+      "address": "1386 Lobo Pk, Bulverde, TX 78163, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
     }
   ],
   "special_events": [
-    "May 5: Food Truck Festival at Riverfront Park",
     "May 6: Private catering at Avengers Wedding",
     "June 1: Concert Series at Amphitheater"
   ],

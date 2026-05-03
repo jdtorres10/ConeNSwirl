@@ -2,33 +2,14 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Wednesday April 29:
-- Location: Regent Park
-- Address: 275 Tilbury Blvd, Boerne, TX 78006, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA
-- Time: 5pm – 8pm
-
-Thursday April 30:
-- Location: Brookstone Creek
-- Address: 5030 Millrace Lndg, San Antonio, TX 78261
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=5030%20Millrace%20Lndg%2C%20San%20Antonio%2C%20TX%2078261
-- Time: 5pm – 8pm
-
-Friday May 1:
-- Location: Silos
-- Address: 6450 Silos View, San Antonio, TX 78252, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=6450%20Silos%20View%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA
-- Time: 5pm – 8pm
-
-Saturday May 2:
-- Location: Los Cielos at Brooks
-- Address: 7722 Calle Coyote, San Antonio, TX 78235, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=7722%20Calle%20Coyote%2C%20San%20Antonio%2C%20TX%2078235%2C%20USA
-- Time: 4pm – 8pm
+Tuesday May 5:
+- Location: Event Community
+- Address: 1386 Lobo Pk, Bulverde, TX 78163, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA
+- Time: 5:00 PM – 8:00 PM
 
 === UPCOMING SPECIAL EVENTS ===
 
-May 5: Food Truck Festival at Riverfront Park
 May 6: Private catering at Avengers Wedding
 June 1: Concert Series at Amphitheater
 
