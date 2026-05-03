@@ -1,0 +1,53 @@
+{
+  "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
+  "weekly_stops": [
+    {
+      "schedule_heading": "Tuesday May 5",
+      "day_short": "Tue",
+      "date_short": "5/5",
+      "location": "Ventana Community",
+      "address": "1386 Lobo Pk, Bulverde, TX 78163, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Wednesday May 6",
+      "day_short": "Wed",
+      "date_short": "5/6",
+      "location": "Texas Research Park",
+      "address": "Proteus Street, Proteus St, San Antonio, TX 78245, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=Proteus%20Street%2C%20Proteus%20St%2C%20San%20Antonio%2C%20TX%2078245%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Thursday May 7",
+      "day_short": "Thu",
+      "date_short": "5/7",
+      "location": "Davis Ranch",
+      "address": "10207 Cactus Hls, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10207%20Cactus%20Hls%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Friday May 8",
+      "day_short": "Fri",
+      "date_short": "5/8",
+      "location": "Cinco Lakes",
+      "address": "10605 Balmorhea, San Antonio, TX 78252, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10605%20Balmorhea%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Saturday May 9",
+      "day_short": "Sat",
+      "date_short": "5/9",
+      "location": "Boerne Middle School Event",
+      "address": "10 Cascade Cavern, Boerne, TX 78015, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10%20Cascade%20Cavern%2C%20Boerne%2C%20TX%2078015%2C%20USA",
+      "hours": "10:00 AM – 4:00 PM"
+    }
+  ],
+  "special_events": [],
+  "seasonal_notes": "During summer months (June-August), we add Thursday evening service at the Beach Boardwalk from 6:00 PM - 9:00 PM.\n\nDuring winter months (December-February), we may adjust hours based on weather. Check our social media for daily updates.",
+  "find_us": "We post our daily location on Instagram and Facebook. Follow us for real-time updates, especially during weather changes or special pop-up locations."
+}

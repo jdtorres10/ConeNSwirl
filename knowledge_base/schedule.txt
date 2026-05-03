@@ -2,31 +2,35 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Wednesday April 29:
-- Location: Regent Park
-- Address: 275 Tilbury Blvd, Boerne, TX 78006, USA
-- Time: 5:00 PM - 8:00 PM
+Tuesday May 5:
+- Location: Ventana Community
+- Address: 1386 Lobo Pk, Bulverde, TX 78163, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA
+- Time: 5:00 PM – 8:00 PM
 
-Thursday April 30:
-- Location: Brookstone Creek
-- Address: 5030 Millrace Lndg, San Antonio, TX 78261
-- Time: 5:00 PM - 8:00 PM
+Wednesday May 6:
+- Location: Texas Research Park
+- Address: Proteus Street, Proteus St, San Antonio, TX 78245, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=Proteus%20Street%2C%20Proteus%20St%2C%20San%20Antonio%2C%20TX%2078245%2C%20USA
+- Time: 5:00 PM – 8:00 PM
 
-Friday May 1:
-- Location: Silos
-- Address: 6450 Silos View, San Antonio, TX 78252, USA
-- Time: 5:00 PM - 8:00 PM
+Thursday May 7:
+- Location: Davis Ranch
+- Address: 10207 Cactus Hls, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10207%20Cactus%20Hls%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+- Time: 5:00 PM – 8:00 PM
 
-Saturday May 2:
-- Location: Los Cielos at Brooks
-- Address: 7722 Calle Coyote, San Antonio, TX 78235, USA
-- Time: 4:00 PM - 8:00 PM
+Friday May 8:
+- Location: Cinco Lakes
+- Address: 10605 Balmorhea, San Antonio, TX 78252, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10605%20Balmorhea%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA
+- Time: 5:00 PM – 8:00 PM
 
-=== UPCOMING SPECIAL EVENTS ===
-
-May 5: Food Truck Festival at Riverfront Park
-May 6: Private catering at Avengers Wedding
-June 1: Concert Series at Amphitheater
+Saturday May 9:
+- Location: Boerne Middle School Event
+- Address: 10 Cascade Cavern, Boerne, TX 78015, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10%20Cascade%20Cavern%2C%20Boerne%2C%20TX%2078015%2C%20USA
+- Time: 10:00 AM – 4:00 PM
 
 === SEASONAL SCHEDULE NOTES ===
 
