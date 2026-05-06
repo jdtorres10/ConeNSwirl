@@ -176,7 +176,7 @@ in the JSON below — do not invent add-ons they did not pick.
 
 Turn this into a friendly plain-English recap they can read at the window: what they're getting, \
 in a natural order. The JSON uses order_type (cone_n_swirl, cup_n_swirl, or cone_only) and fields \
-cone_type, base, filling, standard_blend, extra_blend, premium_blend, stick_em, drizzle — use \
+cone_type, filling, base, premium_blend, standard_blend, extra_blend, stick_em, drizzle — use \
 only the keys that are non-null. If they chose no filling, no extra blend, no premium blend, \
 no Stick'em, or no drizzle, say so briefly using the exact meaning of those choices. Mention that \
 pricing is confirmed at the truck if you are not listing dollar totals.

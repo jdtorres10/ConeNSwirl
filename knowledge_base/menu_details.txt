@@ -14,15 +14,94 @@ STEP 1 - Choose Your Cone:
 - Graham Cracker
 - Plain
 
-STEP 2 - Choose Your Ice Cream Base (Swirl Base):
-- Vanilla
-- Chocolate
-
-STEP 3 - Choose Your Filling (Optional, Included Free):
+STEP 2 - Choose Your Filling (Optional, Included Free):
 - Nutella 
 - Cookie Butter 
 - Peanut Butter
 - No Filling
+
+STEP 3 - Choose Your Ice Cream Base (Swirl Base):
+- Vanilla
+- Chocolate
+
+STEP 4 - Premium Blends (Optional, $1.25):
+- Brownie
+- Strawberry
+- Blueberry
+- Mango
+- Raspberry
+- Pineapple
+- No Premium Blend
+
+STEP 5 - Choose Your Blend (1 Free):
+Standard Blends:
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
+- No Blend
+
+STEP 6 - Choose an Extra Blend (Optional, $0.75):
+Standard Blends:
+- Coffee
+- Mazapan
+- Oreo
+- Cookie Dough
+- Nutter Butter
+- Pecans
+- Walnuts
+- Almonds
+- Reeses
+- Sprinkles
+- Pretzels 
+- Graham Cracker
+- No Extra Blend
+
+STEP 7 - Choose Your Stick 'Em (Optional, $0.99):
+- Oreo
+- Nutter Butter
+- Pretzel Rod
+- Reeses
+- Graham Cracker
+- Kit Kat
+- Nilla Wafers
+- No Stick 'Em
+
+STEP 8 - Choose Your Drizzle (Optional, $0.75):
+- Chocolate
+- Strawberry
+- Salted Caramel
+- Caramel
+- No Drizzle
+
+=== HOW TO BUILD YOUR PERFECT CUP N' SWIRL ===
+
+STEP 1 - Choose Your Filling (Optional, $0.50):
+- Nutella 
+- Cookie Butter 
+- Peanut Butter
+- No Filling
+
+STEP 2 - Choose Your Ice Cream Base (Swirl Base):
+- Vanilla
+- Chocolate
+
+STEP 3 - Premium Blends (Optional, $1.25):
+- Brownie
+- Strawberry
+- Blueberry
+- Mango
+- Raspberry
+- Pineapple
+- No Premium Blend
 
 STEP 4 - Choose Your Blend (1 Free):
 Standard Blends:
@@ -56,16 +135,7 @@ Standard Blends:
 - Graham Cracker
 - No Extra Blend
 
-STEP 6 - Premium Blends (Optional, $1.25):
-- Brownie
-- Strawberry
-- Blueberry
-- Mango
-- Raspberry
-- Pineapple
-- No Premium Blend
-
-STEP 7 - Choose Your Stick 'Em (Optional, $0.99):
+STEP 6 - Choose Your Stick 'Em (Optional, $0.99):
 - Oreo
 - Nutter Butter
 - Pretzel Rod
@@ -75,71 +145,7 @@ STEP 7 - Choose Your Stick 'Em (Optional, $0.99):
 - Nilla Wafers
 - No Stick 'Em
 
-STEP 8 - Choose Your Drizzle (Optional, $0.75):
-- Chocolate
-- Strawberry
-- Salted Caramel
-- Caramel
-- No Drizzle
-
-=== HOW TO BUILD YOUR PERFECT CUP N' SWIRL ===
-
-STEP 1 - Choose Your Ice Cream Base (Swirl Base):
-- Vanilla
-- Chocolate
-
-STEP 2 - Choose Your Blend (1 Free):
-Standard Blends:
-- Coffee
-- Mazapan
-- Oreo
-- Cookie Dough
-- Nutter Butter
-- Pecans
-- Walnuts
-- Almonds
-- Reeses
-- Sprinkles
-- Pretzels 
-- Graham Cracker
-- No Blend
-
-STEP 3 - Choose an Extra Blend (Optional, $0.75):
-Standard Blends:
-- Coffee
-- Mazapan
-- Oreo
-- Cookie Dough
-- Nutter Butter
-- Pecans
-- Walnuts
-- Almonds
-- Reeses
-- Sprinkles
-- Pretzels 
-- Graham Cracker
-- No Extra Blend
-
-STEP 4 - Premium Blends (Optional, $1.25):
-- Brownie
-- Strawberry
-- Blueberry
-- Mango
-- Raspberry
-- Pineapple
-- No Premium Blend
-
-STEP 5 - Choose Your Stick 'Em (Optional, $0.99):
-- Oreo
-- Nutter Butter
-- Pretzel Rod
-- Reeses
-- Graham Cracker
-- Kit Kat
-- Nilla Wafers
-- No Stick 'Em
-
-STEP 6 - Choose Your Drizzle (Optional, $0.75):
+STEP 7 - Choose Your Drizzle (Optional, $0.75):
 - Chocolate
 - Strawberry
 - Salted Caramel
@@ -182,6 +188,7 @@ Cone N' Swirl:
 Cup N' Swirl:
 - Base Cup (cup + ice cream + 1 standard blend): $6.99
 - Swirl Base (ice cream)
+- Filling not included $.50 (Optional)
 - Traditional Standard Blend (1 Free)
 - Add Premium Blend $1.25 per blend
 - Add Extra Standard Blend $0.75 per blend (Optional)

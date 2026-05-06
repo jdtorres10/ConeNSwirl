@@ -98,7 +98,7 @@ BUILD_MENU = {
             "id": "order_type",
             "label": "What are you building?",
             "multi": False,
-            "help": "Cone N' Swirl: 8 steps. Cup N' Swirl: 6 steps (no cone, no filling). Cone Only: 3 steps (no ice cream).",
+            "help": "Cone N' Swirl: 8 steps. Cup N' Swirl: 7 steps (cup, no cone). Cone Only: 3 steps (no ice cream).",
             "options": [
                 {
                     "value": "cone_n_swirl",
@@ -116,10 +116,18 @@ BUILD_MENU = {
         },
         {
             "id": "cone_type",
-            "label": "Step 1 — Choose your cone",
+            "label": "Choose your cone",
             "multi": False,
             "only_if": {"order_type": ["cone_n_swirl", "cone_only"]},
             "options": _CONE_TYPE_OPTIONS,
+        },
+        {
+            "id": "filling",
+            "label": "Choose your filling (optional)",
+            "multi": False,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl", "cone_only"]},
+            "help": "Spreads are included free on cones and Cone Only. On cups, Nutella, Cookie Butter, or Peanut Butter is +$0.50; No Filling is free.",
+            "options": _FILLING_OPTIONS,
         },
         {
             "id": "base",
@@ -129,18 +137,18 @@ BUILD_MENU = {
             "options": _BASE_OPTIONS,
         },
         {
-            "id": "filling",
-            "label": "Choose your filling (included)",
+            "id": "premium_blend",
+            "label": "Premium blend (optional, +$1.25 each)",
             "multi": False,
-            "only_if": {"order_type": ["cone_n_swirl", "cone_only"]},
-            "options": _FILLING_OPTIONS,
+            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
+            "options": _PREMIUM_BLEND_OPTIONS,
         },
         {
             "id": "standard_blend",
             "label": "Choose your blend (1 free)",
             "multi": False,
             "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
-            "help": "Traditional standard blends are included; premium add-ons are a later step.",
+            "help": "One traditional standard blend is included. Pick any premium blends in the previous step.",
             "options": _STANDARD_BLEND_OPTIONS,
         },
         {
@@ -149,13 +157,6 @@ BUILD_MENU = {
             "multi": False,
             "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
             "options": _EXTRA_BLEND_OPTIONS,
-        },
-        {
-            "id": "premium_blend",
-            "label": "Premium blend (optional, +$1.25 each)",
-            "multi": False,
-            "only_if": {"order_type": ["cone_n_swirl", "cup_n_swirl"]},
-            "options": _PREMIUM_BLEND_OPTIONS,
         },
         {
             "id": "stick_em",
@@ -227,13 +228,10 @@ def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
     else:
         out["base"] = None
 
-    if order_type in ("cone_n_swirl", "cone_only"):
-        v, err = req_str("filling", _ALLOWED["filling"])
-        if err:
-            return None, err
-        out["filling"] = v
-    else:
-        out["filling"] = None
+    v, err = req_str("filling", _ALLOWED["filling"])
+    if err:
+        return None, err
+    out["filling"] = v
 
     if order_type in ("cone_n_swirl", "cup_n_swirl"):
         for key in ("standard_blend", "extra_blend", "premium_blend", "stick_em"):
