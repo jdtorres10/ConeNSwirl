@@ -195,7 +195,8 @@ _ALLOWED = {
 def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
     """
     Returns (normalized_order, error_message).
-    normalized_order is JSON-serializable; keys follow kitchen build order for POS and recap.
+    normalized_order is JSON-serializable; keys follow kitchen build order for POS and recap
+    (cup_n_swirl lists filling through drizzle, then cone_type null).
     """
     if not isinstance(raw, dict):
         return None, "order must be an object"
@@ -258,26 +259,42 @@ def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
         return None, err
     drizzle = v
 
-    out: dict = {"order_type": order_type}
-    if order_type in ("cone_n_swirl", "cone_only"):
-        out["cone_type"] = cone_type
+    # Field order matches on-card / kitchen sequence per order_type (cup has no cone; cone_type null last).
+    if order_type == "cup_n_swirl":
+        out = {
+            "order_type": order_type,
+            "filling": filling,
+            "base": base,
+            "premium_blend": premium_blend,
+            "standard_blend": standard_blend,
+            "extra_blend": extra_blend,
+            "stick_em": stick_em,
+            "drizzle": drizzle,
+            "cone_type": None,
+        }
+    elif order_type == "cone_n_swirl":
+        out = {
+            "order_type": order_type,
+            "cone_type": cone_type,
+            "filling": filling,
+            "base": base,
+            "premium_blend": premium_blend,
+            "standard_blend": standard_blend,
+            "extra_blend": extra_blend,
+            "stick_em": stick_em,
+            "drizzle": drizzle,
+        }
     else:
-        out["cone_type"] = None
-    out["filling"] = filling
-    if order_type in ("cone_n_swirl", "cup_n_swirl"):
-        out["base"] = base
-        out["premium_blend"] = premium_blend
-        out["standard_blend"] = standard_blend
-        out["extra_blend"] = extra_blend
-        out["stick_em"] = stick_em
-        out["drizzle"] = drizzle
-    else:
-        # Cone only: line order is cone, filling, drizzle; keep null swirl slots for a stable schema.
-        out["drizzle"] = drizzle
-        out["base"] = None
-        out["premium_blend"] = None
-        out["standard_blend"] = None
-        out["extra_blend"] = None
-        out["stick_em"] = None
+        out = {
+            "order_type": order_type,
+            "cone_type": cone_type,
+            "filling": filling,
+            "drizzle": drizzle,
+            "base": None,
+            "premium_blend": None,
+            "standard_blend": None,
+            "extra_blend": None,
+            "stick_em": None,
+        }
 
     return out, None
