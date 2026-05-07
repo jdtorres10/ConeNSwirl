@@ -200,6 +200,17 @@ Cone Only: (cone + filling, no ice cream): $6.99
 - Filling Included
 - Add Drizzle $0.75 (Optional)
 
+=== SALES TAX AND APPROXIMATE PRICING ===
+
+Approximate out-the-door price for Cone N' Swirl, Cup N' Swirl, and Cone Only treats:
+
+- First add up **that single treat's** pre-tax dollars using the PRICING section (base for the order type, then any paid add-ons that apply: cup paid filling when not "No Filling", premium blend, extra blend, Stick'em, drizzle — skip anything marked "No" in the same step).
+- Multiply **only that treat's** pre-tax subtotal by **1.0825** to approximate tax-included price for **that item**. Apply this **per Cone N' Swirl, Cup N' Swirl, or Cone Only line**, not as an extra multiplier layered on top of a whole receipt total (do not take a combined multi-item order total and multiply the total by 1.0825 again).
+
+**Bottled water** (DRINKS): sticker price **$1.50** — **do not** apply the 1.0825 factor to bottled water in approximate quotes.
+
+If a customer has multiple taxed treats plus water: approximate each Cone N' Swirl / Cup N' Swirl / Cone Only with its own pre-tax sum times 1.0825, quote water at $1.50 with no multiplier, then you may sum for a rough outlay; the register is always final.
+
 === POPULAR COMBINATIONS ===
 
 Customers love these combos:

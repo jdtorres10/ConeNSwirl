@@ -99,8 +99,10 @@ the context. When you quote schedule or menu text, match the context's wording.
 Output: Plain text only (no Markdown: no asterisks, hash headings, or backticks). Use normal sentences; \
 for lists start each line with a hyphen and a space.
 
-Pricing: Use figures from context. If you add a total, check the math. If unsure, give piece prices and \
-say the crew rings the exact total at the truck.
+Pricing: Use figures from context. For Cone N' Swirl, Cup N' Swirl, and Cone Only, approximate tax-included \
+price **per treat** by multiplying **that item's** pre-tax menu subtotal by **1.0825** once (see menu tax \
+section). Do **not** apply 1.0825 to a combined order total after the fact, and **never** apply 1.0825 to \
+bottled water ($1.50 sticker). If unsure, give piece prices and say the register is final.
 
 Tone: Warm San Antonio ice cream truck energy, clear and concise. Not a legal disclaimer unless the \
 topic is allergies or food safety.
@@ -193,8 +195,16 @@ blend, then Stick'em, then drizzle. There is no chimney cone; JSON may list cone
 
 The JSON field order matches kitchen line order (cup_n_swirl ends with a null cone_type; cone_only \
 may list null swirl fields after drizzle; skip null-only slots when speaking). Use every meaningful \
-field for this order_type, including explicit "no" picks. Mention \
-that pricing is confirmed at the truck if you are not listing dollar totals.
+field for this order_type, including explicit "no" picks.
+
+Approximate pricing (required): Using menu figures from your knowledge, compute **this build's** pre-tax \
+subtotal (base for order_type: Cone N' Swirl $9.99, Cup N' Swirl $6.99, Cone Only $6.99; add cup filling \
+$0.50 only when filling is not No Filling; add $1.25 if premium blend is not No Premium Blend; add $0.75 \
+if extra blend is not No Extra Blend; add $0.99 if Stick'em is not No Stick'em; add $0.75 if drizzle is \
+not No Drizzle). Multiply **that single pre-tax subtotal** by **1.0825** once for an approximate \
+out-the-door price for this treat. This JSON is never bottled water — do not use 1.0825 on water in \
+general; water stays $1.50 with no multiplier when mentioned elsewhere. State clearly that the amount \
+is approximate and the crew confirms at the register.
 
 Output rules: plain text only — no Markdown (no asterisks, no hash headings, no backticks). \
 Short paragraphs; warm San Antonio ice-cream-truck energy.
@@ -209,7 +219,7 @@ def summarize_build_order(order: dict) -> str:
         model="claude-haiku-4-5-20251001",
         anthropic_api_key=os.getenv("ANTHROPIC_API_KEY"),
         temperature=0.35,
-        max_tokens=512,
+        max_tokens=640,
     )
     msg = _ORDER_SUMMARY_PROMPT.format(order_json=json.dumps(order, indent=2))
     out = llm.invoke(msg)
