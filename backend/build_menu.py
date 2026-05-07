@@ -195,7 +195,7 @@ _ALLOWED = {
 def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
     """
     Returns (normalized_order, error_message).
-    normalized_order is JSON-serializable for the LLM recap.
+    normalized_order is JSON-serializable; keys follow kitchen build order for POS and recap.
     """
     if not isinstance(raw, dict):
         return None, "order must be an object"
@@ -210,44 +210,74 @@ def validate_and_normalize_order(raw: dict) -> tuple[dict | None, str | None]:
             return None, f"invalid or missing {key}"
         return v, None
 
-    out: dict = {"order_type": order_type}
+    # Keys are ordered kitchen-line / build-card sequence for POS handoff and LLM recap.
+    cone_type: str | None = None
+    base: str | None = None
+    filling: str | None = None
+    premium_blend: str | None = None
+    standard_blend: str | None = None
+    extra_blend: str | None = None
+    stick_em: str | None = None
+    drizzle: str | None = None
 
     if order_type in ("cone_n_swirl", "cone_only"):
         v, err = req_str("cone_type", _ALLOWED["cone_type"])
         if err:
             return None, err
-        out["cone_type"] = v
-    else:
-        out["cone_type"] = None
+        cone_type = v
+
+    v, err = req_str("filling", _ALLOWED["filling"])
+    if err:
+        return None, err
+    filling = v
 
     if order_type in ("cone_n_swirl", "cup_n_swirl"):
         v, err = req_str("base", _ALLOWED["base"])
         if err:
             return None, err
-        out["base"] = v
-    else:
-        out["base"] = None
-
-    v, err = req_str("filling", _ALLOWED["filling"])
-    if err:
-        return None, err
-    out["filling"] = v
-
-    if order_type in ("cone_n_swirl", "cup_n_swirl"):
-        for key in ("standard_blend", "extra_blend", "premium_blend", "stick_em"):
-            v, err = req_str(key, _ALLOWED[key])
-            if err:
-                return None, err
-            out[key] = v
-    else:
-        out["standard_blend"] = None
-        out["extra_blend"] = None
-        out["premium_blend"] = None
-        out["stick_em"] = None
+        base = v
+        v, err = req_str("premium_blend", _ALLOWED["premium_blend"])
+        if err:
+            return None, err
+        premium_blend = v
+        v, err = req_str("standard_blend", _ALLOWED["standard_blend"])
+        if err:
+            return None, err
+        standard_blend = v
+        v, err = req_str("extra_blend", _ALLOWED["extra_blend"])
+        if err:
+            return None, err
+        extra_blend = v
+        v, err = req_str("stick_em", _ALLOWED["stick_em"])
+        if err:
+            return None, err
+        stick_em = v
 
     v, err = req_str("drizzle", _ALLOWED["drizzle"])
     if err:
         return None, err
-    out["drizzle"] = v
+    drizzle = v
+
+    out: dict = {"order_type": order_type}
+    if order_type in ("cone_n_swirl", "cone_only"):
+        out["cone_type"] = cone_type
+    else:
+        out["cone_type"] = None
+    out["filling"] = filling
+    if order_type in ("cone_n_swirl", "cup_n_swirl"):
+        out["base"] = base
+        out["premium_blend"] = premium_blend
+        out["standard_blend"] = standard_blend
+        out["extra_blend"] = extra_blend
+        out["stick_em"] = stick_em
+        out["drizzle"] = drizzle
+    else:
+        # Cone only: line order is cone, filling, drizzle; keep null swirl slots for a stable schema.
+        out["drizzle"] = drizzle
+        out["base"] = None
+        out["premium_blend"] = None
+        out["standard_blend"] = None
+        out["extra_blend"] = None
+        out["stick_em"] = None
 
     return out, None
