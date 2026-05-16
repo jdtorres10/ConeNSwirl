@@ -2,49 +2,67 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Tuesday May 5",
-      "day_short": "Tue",
-      "date_short": "5/5",
-      "location": "Ventana Community",
-      "address": "1386 Lobo Pk, Bulverde, TX 78163, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=1386%20Lobo%20Pk%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Wednesday May 6",
-      "day_short": "Wed",
-      "date_short": "5/6",
-      "location": "Texas Research Park",
-      "address": "Proteus Street, Proteus St, San Antonio, TX 78245, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=Proteus%20Street%2C%20Proteus%20St%2C%20San%20Antonio%2C%20TX%2078245%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Thursday May 7",
+      "schedule_heading": "Thursday May 14",
       "day_short": "Thu",
-      "date_short": "5/7",
-      "location": "Davis Ranch",
-      "address": "10207 Cactus Hls, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10207%20Cactus%20Hls%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
+      "date_short": "5/14",
+      "location": "Villages of West Creek",
+      "address": "12395 Military Dr W, San Antonio, TX 78253, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=12395%20Military%20Dr%20W%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA",
+      "hours": "4:00 PM – 7:00 PM"
     },
     {
-      "schedule_heading": "Friday May 8",
+      "schedule_heading": "Friday May 15",
       "day_short": "Fri",
-      "date_short": "5/8",
-      "location": "Cinco Lakes",
-      "address": "10605 Balmorhea, San Antonio, TX 78252, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10605%20Balmorhea%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "date_short": "5/15",
+      "location": "Silver Canyon",
+      "address": "10114 Castello Cyn, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Saturday May 9",
+      "schedule_heading": "Saturday May 16",
       "day_short": "Sat",
-      "date_short": "5/9",
-      "location": "Boerne Middle School Event",
-      "address": "10 Cascade Cavern, Boerne, TX 78015, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10%20Cascade%20Cavern%2C%20Boerne%2C%20TX%2078015%2C%20USA",
-      "hours": "10:00 AM – 4:00 PM"
+      "date_short": "5/16",
+      "location": "Canyon Crest",
+      "address": "22114 Esperanza Wy, San Antonio, TX 78261, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
+      "hours": "4:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Tuesday May 19",
+      "day_short": "Tue",
+      "date_short": "5/19",
+      "location": "Wildhorse Community",
+      "address": "9700 Mustang Gate, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9700%20Mustang%20Gate%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Wednesday May 20",
+      "day_short": "Wed",
+      "date_short": "5/20",
+      "location": "Copper Canyon",
+      "address": "3460 Copper Willow, Bulverde, TX 78163, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=3460%20Copper%20Willow%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Friday May 22",
+      "day_short": "Fri",
+      "date_short": "5/22",
+      "location": "Valley Ranch",
+      "address": "13624 Valley Lk, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=13624%20Valley%20Lk%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Saturday May 23",
+      "day_short": "Sat",
+      "date_short": "5/23",
+      "location": "Ranches at Creekside",
+      "address": "351 Copper Creek, Boerne, TX 78006, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA",
+      "hours": "4:00 PM – 8:00 PM"
     }
   ],
   "special_events": [],
