@@ -2,47 +2,29 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Thursday May 14:
+Wednesday July 8:
+- Location: Palomino Apartments
+- Address: 14111 Vance Jackson Rd, San Antonio, TX 78249, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=14111%20Vance%20Jackson%20Rd%2C%20San%20Antonio%2C%20TX%2078249%2C%20USA
+- Time: 5:00 PM – 8:00 PM
+
+Thursday July 9:
 - Location: Villages of West Creek
 - Address: 12395 Military Dr W, San Antonio, TX 78253, USA
 - Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=12395%20Military%20Dr%20W%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA
-- Time: 4:00 PM – 7:00 PM
-
-Friday May 15:
-- Location: Silver Canyon
-- Address: 10114 Castello Cyn, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Saturday May 16:
-- Location: Canyon Crest
-- Address: 22114 Esperanza Wy, San Antonio, TX 78261, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA
-- Time: 4:00 PM – 8:00 PM
+Friday July 10:
+- Location: Legend Point
+- Address: 3829 Legend Pond, New Braunfels, TX 78130, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=3829%20Legend%20Pond%2C%20New%20Braunfels%2C%20TX%2078130%2C%20USA
+- Time: 6:00 PM – 8:00 PM
 
-Tuesday May 19:
-- Location: Wildhorse Community
-- Address: 9700 Mustang Gate, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9700%20Mustang%20Gate%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
-- Time: 5:00 PM – 8:00 PM
-
-Wednesday May 20:
-- Location: Copper Canyon
-- Address: 3460 Copper Willow, Bulverde, TX 78163, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=3460%20Copper%20Willow%2C%20Bulverde%2C%20TX%2078163%2C%20USA
-- Time: 5:00 PM – 8:00 PM
-
-Friday May 22:
-- Location: Valley Ranch
-- Address: 13624 Valley Lk, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=13624%20Valley%20Lk%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
-- Time: 5:00 PM – 8:00 PM
-
-Saturday May 23:
-- Location: Ranches at Creekside
-- Address: 351 Copper Creek, Boerne, TX 78006, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA
-- Time: 4:00 PM – 8:00 PM
+Saturday July 11:
+- Location: Esperanza
+- Address: 601 Esperanza Blvd, Boerne, TX 78006, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=601%20Esperanza%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA
+- Time: 12:00 PM – 3:00 PM
 
 === SEASONAL SCHEDULE NOTES ===
 
