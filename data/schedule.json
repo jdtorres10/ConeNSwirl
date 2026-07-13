@@ -2,40 +2,85 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Wednesday July 8",
+      "schedule_heading": "Tuesday July 14",
+      "day_short": "Tue",
+      "date_short": "7/14",
+      "location": "Ranches at Creekside",
+      "address": "351 Copper Creek, Boerne, TX 78006, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA",
+      "hours": "4:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Wednesday July 15",
       "day_short": "Wed",
-      "date_short": "7/8",
-      "location": "Palomino Apartments",
-      "address": "14111 Vance Jackson Rd, San Antonio, TX 78249, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=14111%20Vance%20Jackson%20Rd%2C%20San%20Antonio%2C%20TX%2078249%2C%20USA",
+      "date_short": "7/15",
+      "location": "Regent Park",
+      "address": "275 Tilbury Blvd, Boerne, TX 78006, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Thursday July 9",
-      "day_short": "Thu",
-      "date_short": "7/9",
-      "location": "Villages of West Creek",
-      "address": "12395 Military Dr W, San Antonio, TX 78253, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=12395%20Military%20Dr%20W%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Friday July 10",
+      "schedule_heading": "Friday July 17",
       "day_short": "Fri",
-      "date_short": "7/10",
-      "location": "Legend Point",
-      "address": "3829 Legend Pond, New Braunfels, TX 78130, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=3829%20Legend%20Pond%2C%20New%20Braunfels%2C%20TX%2078130%2C%20USA",
-      "hours": "6:00 PM – 8:00 PM"
+      "date_short": "7/17",
+      "location": "Atlantica Alamo Ranch",
+      "address": "5415 Alamo Pkwy, San Antonio, TX 78253, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=5415%20Alamo%20Pkwy%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Saturday July 11",
+      "schedule_heading": "Saturday July 18",
       "day_short": "Sat",
-      "date_short": "7/11",
-      "location": "Esperanza",
-      "address": "601 Esperanza Blvd, Boerne, TX 78006, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=601%20Esperanza%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA",
-      "hours": "12:00 PM – 3:00 PM"
+      "date_short": "7/18",
+      "location": "Cielo Ranch Neighborhood Stop",
+      "address": "7443 Desperado Way, Boerne, TX 78015, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=7443%20Desperado%20Way%2C%20Boerne%2C%20TX%2078015%2C%20USA",
+      "hours": "2:00 PM – 6:00 PM"
+    },
+    {
+      "schedule_heading": "Tuesday July 21",
+      "day_short": "Tue",
+      "date_short": "7/21",
+      "location": "Private Event - LPA Design Studios",
+      "address": "1811 S Alamo St suite 100, San Antonio, TX 78204, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=1811%20S%20Alamo%20St%20suite%20100%2C%20San%20Antonio%2C%20TX%2078204%2C%20USA",
+      "hours": "12:30 PM – 1:30 PM"
+    },
+    {
+      "schedule_heading": "Wednesday July 22",
+      "day_short": "Wed",
+      "date_short": "7/22",
+      "location": "Waterwheel",
+      "address": "9255 Landa Falls, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9255%20Landa%20Falls%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Thursday July 23",
+      "day_short": "Thu",
+      "date_short": "7/23",
+      "location": "Private Event - HDR Engineering",
+      "address": "9311 San Pedro Ave, San Antonio, TX 78216, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9311%20San%20Pedro%20Ave%2C%20San%20Antonio%2C%20TX%2078216%2C%20USA",
+      "hours": "2:00 PM – 4:00 PM"
+    },
+    {
+      "schedule_heading": "Friday July 24",
+      "day_short": "Fri",
+      "date_short": "7/24",
+      "location": "Canyon Crest",
+      "address": "22114 Esperanza Wy, San Antonio, TX 78261, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Saturday July 25",
+      "day_short": "Sat",
+      "date_short": "7/25",
+      "location": "Silos",
+      "address": "6450 Silos View, San Antonio, TX 78252, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=6450%20Silos%20View%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "hours": "12:00 PM – 2:00 PM"
     }
   ],
   "special_events": [],
