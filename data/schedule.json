@@ -2,85 +2,58 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Tuesday July 14",
-      "day_short": "Tue",
-      "date_short": "7/14",
-      "location": "Ranches at Creekside",
-      "address": "351 Copper Creek, Boerne, TX 78006, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA",
-      "hours": "4:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Wednesday July 15",
-      "day_short": "Wed",
-      "date_short": "7/15",
-      "location": "Regent Park",
-      "address": "275 Tilbury Blvd, Boerne, TX 78006, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Friday July 17",
-      "day_short": "Fri",
-      "date_short": "7/17",
-      "location": "Atlantica Alamo Ranch",
-      "address": "5415 Alamo Pkwy, San Antonio, TX 78253, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=5415%20Alamo%20Pkwy%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Saturday July 18",
-      "day_short": "Sat",
-      "date_short": "7/18",
-      "location": "Cielo Ranch Neighborhood Stop",
-      "address": "7443 Desperado Way, Boerne, TX 78015, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=7443%20Desperado%20Way%2C%20Boerne%2C%20TX%2078015%2C%20USA",
-      "hours": "2:00 PM – 6:00 PM"
-    },
-    {
-      "schedule_heading": "Tuesday July 21",
-      "day_short": "Tue",
-      "date_short": "7/21",
-      "location": "Private Event - LPA Design Studios",
-      "address": "1811 S Alamo St suite 100, San Antonio, TX 78204, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=1811%20S%20Alamo%20St%20suite%20100%2C%20San%20Antonio%2C%20TX%2078204%2C%20USA",
-      "hours": "12:30 PM – 1:30 PM"
-    },
-    {
-      "schedule_heading": "Wednesday July 22",
-      "day_short": "Wed",
-      "date_short": "7/22",
-      "location": "Waterwheel",
-      "address": "9255 Landa Falls, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=9255%20Landa%20Falls%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Thursday July 23",
+      "schedule_heading": "Thursday August 13",
       "day_short": "Thu",
-      "date_short": "7/23",
-      "location": "Private Event - HDR Engineering",
-      "address": "9311 San Pedro Ave, San Antonio, TX 78216, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=9311%20San%20Pedro%20Ave%2C%20San%20Antonio%2C%20TX%2078216%2C%20USA",
-      "hours": "2:00 PM – 4:00 PM"
+      "date_short": "8/13",
+      "location": "Silver Canyon",
+      "address": "10114 Castello Cyn, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Friday July 24",
-      "day_short": "Fri",
-      "date_short": "7/24",
+      "schedule_heading": "Saturday August 15",
+      "day_short": "Sat",
+      "date_short": "8/15",
+      "location": "Vista",
+      "address": "5403 Vista Run Dr, San Antonio, TX 78247, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=5403%20Vista%20Run%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Tuesday August 18",
+      "day_short": "Tue",
+      "date_short": "8/18",
+      "location": "Braun Pointe - Future Storefront Location",
+      "address": "9910 West Loop 1604 North, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20West%20Loop%201604%20North%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Wednesday August 19",
+      "day_short": "Wed",
+      "date_short": "8/19",
       "location": "Canyon Crest",
       "address": "22114 Esperanza Wy, San Antonio, TX 78261, USA",
       "map_url": "https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Saturday July 25",
-      "day_short": "Sat",
-      "date_short": "7/25",
-      "location": "Silos",
-      "address": "6450 Silos View, San Antonio, TX 78252, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=6450%20Silos%20View%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
-      "hours": "12:00 PM – 2:00 PM"
+      "schedule_heading": "Thursday August 20",
+      "day_short": "Thu",
+      "date_short": "8/20",
+      "location": "Stillwater Ranch",
+      "address": "7900 High Lonesome, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Friday August 21",
+      "day_short": "Fri",
+      "date_short": "8/21",
+      "location": "Hennersby Hollow",
+      "address": "14638 Hennersby Wy, San Antonio, TX 78252, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=14638%20Hennersby%20Wy%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
     }
   ],
   "special_events": [],
