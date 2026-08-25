@@ -2,40 +2,58 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Thursday August 13:
-- Location: Silver Canyon
-- Address: 10114 Castello Cyn, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Tuesday August 25:
+- Location: Cinco Lakes
+- Address: 10605 Balmorhea, San Antonio, TX 78252, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10605%20Balmorhea%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA
+- Time: 4:00 PM – 7:30 PM
+
+Wednesday August 26:
+- Location: Brookmill
+- Address: 3990 Ladera Hls, San Antonio, TX
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=3990%20Ladera%20Hls%2C%20San%20Antonio%2C%20TX
 - Time: 5:00 PM – 8:00 PM
 
-Saturday August 15:
-- Location: Vista
-- Address: 5403 Vista Run Dr, San Antonio, TX 78247, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=5403%20Vista%20Run%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA
+Thursday August 27:
+- Location: Trinity Oaks
+- Address: 2645 Trinity Park, San Antonio, TX 78261, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=2645%20Trinity%20Park%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Tuesday August 18:
-- Location: Braun Pointe - Future Storefront Location
-- Address: 9910 West Loop 1604 North, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9910%20West%20Loop%201604%20North%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Friday August 28:
+- Location: Braun Pointe
+- Address: 9910 W Loop 1604 N, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Wednesday August 19:
-- Location: Canyon Crest
-- Address: 22114 Esperanza Wy, San Antonio, TX 78261, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA
+Saturday August 29:
+- Location: Talise de Culebra
+- Address: 13051 Shoreline Dr, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=13051%20Shoreline%20Dr%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+- Time: 4:00 PM – 8:00 PM
+
+Tuesday September 1:
+- Location: Regent Park
+- Address: 275 Tilbury Blvd, Boerne, TX 78006, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Thursday August 20:
-- Location: Stillwater Ranch
-- Address: 7900 High Lonesome, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Wednesday September 2:
+- Location: Braun Pointe
+- Address: 9910 W Loop 1604 N, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Friday August 21:
-- Location: Hennersby Hollow
-- Address: 14638 Hennersby Wy, San Antonio, TX 78252, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=14638%20Hennersby%20Wy%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA
+Thursday September 3:
+- Location: Ranches at Creekside
+- Address: 351 Copper Creek, Boerne, TX 78006, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA
+- Time: 5:00 PM – 8:00 PM
+
+Friday September 4:
+- Location: Belmont HOA
+- Address: 400 Belmont Pkwy, Schertz, TX 78108, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=400%20Belmont%20Pkwy%2C%20Schertz%2C%20TX%2078108%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
 === SEASONAL SCHEDULE NOTES ===

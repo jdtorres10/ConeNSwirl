@@ -2,57 +2,84 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Thursday August 13",
-      "day_short": "Thu",
-      "date_short": "8/13",
-      "location": "Silver Canyon",
-      "address": "10114 Castello Cyn, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Saturday August 15",
-      "day_short": "Sat",
-      "date_short": "8/15",
-      "location": "Vista",
-      "address": "5403 Vista Run Dr, San Antonio, TX 78247, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=5403%20Vista%20Run%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Tuesday August 18",
+      "schedule_heading": "Tuesday August 25",
       "day_short": "Tue",
-      "date_short": "8/18",
-      "location": "Braun Pointe - Future Storefront Location",
-      "address": "9910 West Loop 1604 North, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20West%20Loop%201604%20North%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
+      "date_short": "8/25",
+      "location": "Cinco Lakes",
+      "address": "10605 Balmorhea, San Antonio, TX 78252, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10605%20Balmorhea%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "hours": "4:00 PM – 7:30 PM"
     },
     {
-      "schedule_heading": "Wednesday August 19",
+      "schedule_heading": "Wednesday August 26",
       "day_short": "Wed",
-      "date_short": "8/19",
-      "location": "Canyon Crest",
-      "address": "22114 Esperanza Wy, San Antonio, TX 78261, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=22114%20Esperanza%20Wy%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
+      "date_short": "8/26",
+      "location": "Brookmill",
+      "address": "3990 Ladera Hls, San Antonio, TX",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=3990%20Ladera%20Hls%2C%20San%20Antonio%2C%20TX",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Thursday August 20",
+      "schedule_heading": "Thursday August 27",
       "day_short": "Thu",
-      "date_short": "8/20",
-      "location": "Stillwater Ranch",
-      "address": "7900 High Lonesome, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "date_short": "8/27",
+      "location": "Trinity Oaks",
+      "address": "2645 Trinity Park, San Antonio, TX 78261, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=2645%20Trinity%20Park%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Friday August 21",
+      "schedule_heading": "Friday August 28",
       "day_short": "Fri",
-      "date_short": "8/21",
-      "location": "Hennersby Hollow",
-      "address": "14638 Hennersby Wy, San Antonio, TX 78252, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=14638%20Hennersby%20Wy%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "date_short": "8/28",
+      "location": "Braun Pointe",
+      "address": "9910 W Loop 1604 N, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Saturday August 29",
+      "day_short": "Sat",
+      "date_short": "8/29",
+      "location": "Talise de Culebra",
+      "address": "13051 Shoreline Dr, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=13051%20Shoreline%20Dr%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "4:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Tuesday September 1",
+      "day_short": "Tue",
+      "date_short": "9/1",
+      "location": "Regent Park",
+      "address": "275 Tilbury Blvd, Boerne, TX 78006, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=275%20Tilbury%20Blvd%2C%20Boerne%2C%20TX%2078006%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Wednesday September 2",
+      "day_short": "Wed",
+      "date_short": "9/2",
+      "location": "Braun Pointe",
+      "address": "9910 W Loop 1604 N, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Thursday September 3",
+      "day_short": "Thu",
+      "date_short": "9/3",
+      "location": "Ranches at Creekside",
+      "address": "351 Copper Creek, Boerne, TX 78006, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA",
+      "hours": "5:00 PM – 8:00 PM"
+    },
+    {
+      "schedule_heading": "Friday September 4",
+      "day_short": "Fri",
+      "date_short": "9/4",
+      "location": "Belmont HOA",
+      "address": "400 Belmont Pkwy, Schertz, TX 78108, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=400%20Belmont%20Pkwy%2C%20Schertz%2C%20TX%2078108%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     }
   ],
