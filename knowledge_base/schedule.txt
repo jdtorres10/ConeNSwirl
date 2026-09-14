@@ -2,35 +2,23 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Tuesday September 8:
-- Location: Silver Canyon
-- Address: 10114 Castello Cyn, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Tuesday September 15:
+- Location: Wildhorse
+- Address: 9700 Mustang Gate, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9700%20Mustang%20Gate%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Wednesday September 9:
-- Location: Stillwater Ranch
-- Address: 7900 High Lonesome, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Wednesday September 16:
+- Location: Falcon Landing
+- Address: 8302 Catalina Port, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=8302%20Catalina%20Port%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
 - Time: 5:00 PM – 8:00 PM
 
-Thursday September 10:
-- Location: Davis Ranch
-- Address: 10692 Swayback Ranch, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10692%20Swayback%20Ranch%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
-- Time: 4:00 PM – 7:30 PM
-
-Friday September 11:
-- Location: Braun Pointe - Future Storefront Location
-- Address: 9910 W Loop 1604 N, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+Friday September 18:
+- Location: Wortham Oaks
+- Address: 21506 Wortham Oaks, San Antonio, TX 78261, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=21506%20Wortham%20Oaks%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA
 - Time: 5:00 PM – 8:00 PM
-
-Saturday September 12:
-- Location: Ladera
-- Address: 14750 W Grosenbacher Rd, San Antonio, TX 78245, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=14750%20W%20Grosenbacher%20Rd%2C%20San%20Antonio%2C%20TX%2078245%2C%20USA
-- Time: 4:00 PM – 8:00 PM
 
 === SEASONAL SCHEDULE NOTES ===
 

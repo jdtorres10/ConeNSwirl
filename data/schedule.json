@@ -2,49 +2,31 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Tuesday September 8",
+      "schedule_heading": "Tuesday September 15",
       "day_short": "Tue",
-      "date_short": "9/8",
-      "location": "Silver Canyon",
-      "address": "10114 Castello Cyn, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "date_short": "9/15",
+      "location": "Wildhorse",
+      "address": "9700 Mustang Gate, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=9700%20Mustang%20Gate%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Wednesday September 9",
+      "schedule_heading": "Wednesday September 16",
       "day_short": "Wed",
-      "date_short": "9/9",
-      "location": "Stillwater Ranch",
-      "address": "7900 High Lonesome, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "date_short": "9/16",
+      "location": "Falcon Landing",
+      "address": "8302 Catalina Port, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=8302%20Catalina%20Port%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Thursday September 10",
-      "day_short": "Thu",
-      "date_short": "9/10",
-      "location": "Davis Ranch",
-      "address": "10692 Swayback Ranch, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=10692%20Swayback%20Ranch%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "4:00 PM – 7:30 PM"
-    },
-    {
-      "schedule_heading": "Friday September 11",
+      "schedule_heading": "Friday September 18",
       "day_short": "Fri",
-      "date_short": "9/11",
-      "location": "Braun Pointe - Future Storefront Location",
-      "address": "9910 W Loop 1604 N, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "date_short": "9/18",
+      "location": "Wortham Oaks",
+      "address": "21506 Wortham Oaks, San Antonio, TX 78261, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=21506%20Wortham%20Oaks%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Saturday September 12",
-      "day_short": "Sat",
-      "date_short": "9/12",
-      "location": "Ladera",
-      "address": "14750 W Grosenbacher Rd, San Antonio, TX 78245, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=14750%20W%20Grosenbacher%20Rd%2C%20San%20Antonio%2C%20TX%2078245%2C%20USA",
-      "hours": "4:00 PM – 8:00 PM"
     }
   ],
   "special_events": [],
