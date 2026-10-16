@@ -2,48 +2,30 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Tuesday September 29",
-      "day_short": "Tue",
-      "date_short": "9/29",
-      "location": "Bulverde Village",
-      "address": "24451 Bulverde Green, San Antonio, TX 78261, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=24451%20Bulverde%20Green%2C%20San%20Antonio%2C%20TX%2078261%2C%20USA",
-      "hours": "4:00 PM – 7:30 PM"
-    },
-    {
-      "schedule_heading": "Wednesday September 30",
-      "day_short": "Wed",
-      "date_short": "9/30",
-      "location": "Ranches at Creekside",
-      "address": "351 Copper Creek, Boerne, TX 78006, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=351%20Copper%20Creek%2C%20Boerne%2C%20TX%2078006%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
-    },
-    {
-      "schedule_heading": "Thursday October 1",
+      "schedule_heading": "Thursday October 15",
       "day_short": "Thu",
-      "date_short": "10/1",
-      "location": "Winding Brook",
-      "address": "14306 Galm Rd, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=14306%20Galm%20Rd%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "date_short": "10/15",
+      "location": "Stillwater Ranch",
+      "address": "7900 High Lonesome, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Friday October 2",
+      "schedule_heading": "Friday October 16",
       "day_short": "Fri",
-      "date_short": "10/2",
+      "date_short": "10/16",
       "location": "Braun Pointe Parking Lot - Future Storefront Location",
       "address": "9910 W Loop 1604 N, San Antonio, TX 78254, USA",
       "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     },
     {
-      "schedule_heading": "Saturday October 3",
+      "schedule_heading": "Saturday October 17",
       "day_short": "Sat",
-      "date_short": "10/3",
-      "location": "Hennersby Hollow",
-      "address": "Hennersby Way, San Antonio, TX 78252, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=Hennersby%20Way%2C%20San%20Antonio%2C%20TX%2078252%2C%20USA",
+      "date_short": "10/17",
+      "location": "Vista",
+      "address": "16922 Vista Village Dr, San Antonio, TX 78247, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=16922%20Vista%20Village%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA",
       "hours": "5:00 PM – 8:00 PM"
     }
   ],
