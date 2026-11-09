@@ -2,23 +2,35 @@ FOOD TRUCK SCHEDULE & LOCATIONS
 
 === THIS WEEK'S SCHEDULE ===
 
-Thursday October 15:
-- Location: Stillwater Ranch
-- Address: 7900 High Lonesome, San Antonio, TX 78254, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
-- Time: 5:00 PM – 8:00 PM
+Tuesday November 10:
+- Location: Redbird Ranch
+- Address: 410 Holliman Pkwy, San Antonio, TX 78253, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=410%20Holliman%20Pkwy%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA
+- Time: 4:00 PM – 7:00 PM
 
-Friday October 16:
+Wednesday November 11:
+- Location: Copper Canyon
+- Address: 3460 Copper Willow, Bulverde, TX 78163, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=3460%20Copper%20Willow%2C%20Bulverde%2C%20TX%2078163%2C%20USA
+- Time: 4:00 PM – 7:00 PM
+
+Thursday November 12:
+- Location: Silver Canyon
+- Address: 10114 Castello Cyn, San Antonio, TX 78254, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
+- Time: 4:00 PM – 7:00 PM
+
+Friday November 13:
 - Location: Braun Pointe Parking Lot - Future Storefront Location
 - Address: 9910 W Loop 1604 N, San Antonio, TX 78254, USA
 - Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA
-- Time: 5:00 PM – 8:00 PM
+- Time: 4:00 PM – 7:00 PM
 
-Saturday October 17:
-- Location: Vista
-- Address: 16922 Vista Village Dr, San Antonio, TX 78247, USA
-- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=16922%20Vista%20Village%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA
-- Time: 5:00 PM – 8:00 PM
+Saturday November 14:
+- Location: The Overlook at Creekside
+- Address: 3214 Mountain Mint, New Braunfels, TX 78130, USA
+- Map link (opens in maps app): https://www.google.com/maps/search/?api=1&query=3214%20Mountain%20Mint%2C%20New%20Braunfels%2C%20TX%2078130%2C%20USA
+- Time: 4:00 PM – 7:00 PM
 
 === SEASONAL SCHEDULE NOTES ===
 

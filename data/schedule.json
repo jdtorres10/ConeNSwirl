@@ -2,31 +2,49 @@
   "__workflow__": "Edit this file, then from the repo root run: python3 scripts/generate_schedule.py (updates index.html schedule table + knowledge_base/schedule.txt). Commit all three.",
   "weekly_stops": [
     {
-      "schedule_heading": "Thursday October 15",
-      "day_short": "Thu",
-      "date_short": "10/15",
-      "location": "Stillwater Ranch",
-      "address": "7900 High Lonesome, San Antonio, TX 78254, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=7900%20High%20Lonesome%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
+      "schedule_heading": "Tuesday November 10",
+      "day_short": "Tue",
+      "date_short": "11/10",
+      "location": "Redbird Ranch",
+      "address": "410 Holliman Pkwy, San Antonio, TX 78253, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=410%20Holliman%20Pkwy%2C%20San%20Antonio%2C%20TX%2078253%2C%20USA",
+      "hours": "4:00 PM – 7:00 PM"
     },
     {
-      "schedule_heading": "Friday October 16",
+      "schedule_heading": "Wednesday November 11",
+      "day_short": "Wed",
+      "date_short": "11/11",
+      "location": "Copper Canyon",
+      "address": "3460 Copper Willow, Bulverde, TX 78163, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=3460%20Copper%20Willow%2C%20Bulverde%2C%20TX%2078163%2C%20USA",
+      "hours": "4:00 PM – 7:00 PM"
+    },
+    {
+      "schedule_heading": "Thursday November 12",
+      "day_short": "Thu",
+      "date_short": "11/12",
+      "location": "Silver Canyon",
+      "address": "10114 Castello Cyn, San Antonio, TX 78254, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=10114%20Castello%20Cyn%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
+      "hours": "4:00 PM – 7:00 PM"
+    },
+    {
+      "schedule_heading": "Friday November 13",
       "day_short": "Fri",
-      "date_short": "10/16",
+      "date_short": "11/13",
       "location": "Braun Pointe Parking Lot - Future Storefront Location",
       "address": "9910 W Loop 1604 N, San Antonio, TX 78254, USA",
       "map_url": "https://www.google.com/maps/search/?api=1&query=9910%20W%20Loop%201604%20N%2C%20San%20Antonio%2C%20TX%2078254%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
+      "hours": "4:00 PM – 7:00 PM"
     },
     {
-      "schedule_heading": "Saturday October 17",
+      "schedule_heading": "Saturday November 14",
       "day_short": "Sat",
-      "date_short": "10/17",
-      "location": "Vista",
-      "address": "16922 Vista Village Dr, San Antonio, TX 78247, USA",
-      "map_url": "https://www.google.com/maps/search/?api=1&query=16922%20Vista%20Village%20Dr%2C%20San%20Antonio%2C%20TX%2078247%2C%20USA",
-      "hours": "5:00 PM – 8:00 PM"
+      "date_short": "11/14",
+      "location": "The Overlook at Creekside",
+      "address": "3214 Mountain Mint, New Braunfels, TX 78130, USA",
+      "map_url": "https://www.google.com/maps/search/?api=1&query=3214%20Mountain%20Mint%2C%20New%20Braunfels%2C%20TX%2078130%2C%20USA",
+      "hours": "4:00 PM – 7:00 PM"
     }
   ],
   "special_events": [],
